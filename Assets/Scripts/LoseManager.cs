@@ -15,6 +15,9 @@ public class LoseManager : MonoBehaviour
     [SerializeField] float timeToReset;
     #endregion
     #region Methods
+    /// <summary>
+    /// Is Called at the Start of the Scene
+    /// </summary>
     public void Start()
     {
         timeToReset = Time.timeScale;
