@@ -221,6 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1270977359}
+  offset: 5
+  offsetSmoothing: 1.5
 --- !u!1001 &543945276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,8 +294,10 @@ GameObject:
   m_Component:
   - component: {fileID: 690354921}
   - component: {fileID: 690354920}
+  - component: {fileID: 690354925}
   - component: {fileID: 690354923}
   - component: {fileID: 690354922}
+  - component: {fileID: 690354924}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -409,12 +413,40 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &690354924
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690354919}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
+--- !u!114 &690354925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690354919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cbefaefe8f15440910690406795deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &700467195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapType: 0
   trapToTrigger: {fileID: 0}
-  playerCharacter: {fileID: 0}
+  loseManager: {fileID: 0}
 --- !u!4 &1149891885
 Transform:
   m_ObjectHideFlags: 0
@@ -703,6 +735,7 @@ MonoBehaviour:
   loseCounter: 0
   deathCounterText: {fileID: 0}
   losingScreen: {fileID: 0}
+  playerCharacter: {fileID: 0}
 --- !u!4 &1927618446
 Transform:
   m_ObjectHideFlags: 0
@@ -749,8 +782,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseManager: {fileID: 1927618443}
-  isAlwaysActive: 0
-  playerCharacter: {fileID: 0}
 --- !u!61 &2005181829
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -100,9 +100,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -126,7 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveForce: 15
-  jumpForce: 0.01
+  jumpForce: 50
   maxSpeed: 5
   interactable: {fileID: 0}
   dead: 0

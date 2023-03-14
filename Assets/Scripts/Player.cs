@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
     private void HandleMovement(Vector2 direction)
     {
-        if (rb.velocity.magnitude < maxSpeed)
+        if (Mathf.Abs(rb.velocity.x) < maxSpeed)
         {
             rb.AddRelativeForce(direction * moveForce);
         }
