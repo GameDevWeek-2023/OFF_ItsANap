@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class EnemyMonster : MonoBehaviour
 {
-    
+    [SerializeField] LoseManager loseManager;
     private Rigidbody2D player = null;
+    private bool playerInRange = false;
     [SerializeField] private float eps = 0.01f;
+    [SerializeField] private float speed = 1f;
     [SerializeField] private float timer = 1f;
     private float currentTimer;
     private bool followPlayer = false;
+
+    void Awake()
+    {
+        loseManager = FindObjectOfType<LoseManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +31,7 @@ public class EnemyMonster : MonoBehaviour
         {
             Move();
         }
-        Debug.Log("Velocity " + player.velocity);
-        if (player.velocity.magnitude < eps) 
+        if (playerInRange && player.velocity.magnitude < eps) 
         {
             if (currentTimer <= 0)
             {
@@ -45,24 +51,31 @@ public class EnemyMonster : MonoBehaviour
 
     private void Move()
     {
-        Debug.Log("Move");
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        transform.position += direction * Time.deltaTime * speed;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger");
+        if (other.tag != "Player") return;
         if (!other.TryGetComponent<Rigidbody2D>(out player))
         {
             return;
         }
+        playerInRange = true;
 
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        player = null;
+        if (other.tag == "Player")
+        {
+            playerInRange = false;
+        }
+        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collsion");
+        loseManager.UpdateLose();
     }
 }
