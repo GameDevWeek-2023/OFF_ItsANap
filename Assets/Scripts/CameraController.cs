@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Player target;
-    private float offset = 5f;
-    private float offsetSmoothing = 1.5f;
+    public float offset = 5f;
+    public float offsetSmoothing = 1.5f;
     private Vector3 targetPositon;
     // Start is called before the first frame update
     void Start()
