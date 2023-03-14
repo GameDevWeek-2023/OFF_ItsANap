@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class LoseManager : MonoBehaviour
 {
     #region Fields
-    public int loseCounter = 0;
+    public int loseCounter;
     [SerializeField] Text deathCounterText;
     [SerializeField] Canvas losingScreen;
     [SerializeField] GameObject playerCharacter;
@@ -16,7 +16,7 @@ public class LoseManager : MonoBehaviour
     #endregion
     #region Methods
     /// <summary>
-    /// Is Called at the Start of the Scene
+    /// Start is called before the first frame update
     /// </summary>
     public void Start()
     {
@@ -28,7 +28,7 @@ public class LoseManager : MonoBehaviour
     public void UpdateLose()
     {
         loseCounter++;
-        deathCounterText.text = Convert.ToString(loseCounter);
+        UpdateCounterText();
         losingScreen.enabled = true;
         playerCharacter.GetComponent<Player>().Dead();
     }
@@ -44,6 +44,10 @@ public class LoseManager : MonoBehaviour
     public void MenuButton(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);
+    }
+    public void UpdateCounterText()
+    {
+        deathCounterText.text = Convert.ToString(loseCounter);
     }
     #endregion
 }
