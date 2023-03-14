@@ -125,7 +125,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveForce: 15
+  jumpForce: 0.01
+  maxSpeed: 5
+  interactable: {fileID: 0}
+  dead: 0
   direction: {x: 0, y: 0}
+  lastCheckpoint: {x: 0, y: 0}
 --- !u!70 &7264829148437872827
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     public float moveForce = 15f;
-    public float jumpForce = 40f;
+    public float jumpForce = 5f;
     public float maxSpeed = 5f;
     public Interactable interactable = null;
     public bool dead = false;
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             direction = Vector2.right;
             HandleMovement(Vector2.right);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (interactable == null)
             {
@@ -60,10 +60,6 @@ public class Player : MonoBehaviour
             }
             
         }
-        if (Input.GetKey(KeyCode.V)) 
-        {
-            Dead();
-        }
     }
 
     public void Respawn() 
@@ -76,9 +72,10 @@ public class Player : MonoBehaviour
 
     public void Dead()
     {
-        // die animation
-        // stopp movement        
         dead = true;
+        // die animation
+        // stopp movement    
+        Time.timeScale = 0f; 
     }
 
     private void HandleMovement(Vector2 direction)
@@ -92,7 +89,7 @@ public class Player : MonoBehaviour
     private void HandleJump()
     {
         if (!onGround()) return;
-        rb.AddRelativeForce(Vector2.up * jumpForce);
+        rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private bool onGround()
