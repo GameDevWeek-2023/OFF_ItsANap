@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Player target;
-    private float offset = 10f;
-    private float offsetSmoothing;
+    private float offset = 5f;
+    private float offsetSmoothing = 1.5f;
     private Vector3 targetPositon;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetPositon = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
+        targetPositon = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
         if (target.direction.x > 0)
         {
             targetPositon = new Vector3(targetPositon.x + offset, targetPositon.y, targetPositon.z);

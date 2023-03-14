@@ -13,20 +13,26 @@ public class Player : MonoBehaviour
     private float moveForce = 15f;
     private float jumpForce = 40f;
     private float maxSpeed = 5f;
+    private Interactable interactable = null;
+    private bool dead = false;
     public Vector2 direction;
 
     // last Checkpoint
-    private Vector2 lastCheckpoint;
+    [SerializeField] private Vector2 lastCheckpoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
         if (Input.GetKey(KeyCode.A))
         {
             // move left
@@ -41,14 +47,37 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            // Jump
-            HandleJump();
+            if (interactable == null)
+            {
+                // Jump
+                HandleJump();
+            }
+            else
+            {
+               // TODO interact with interactable
+               interactable.interact();
+            }
+            
+        }
+        if (Input.GetKey(KeyCode.V)) 
+        {
+            Dead();
         }
     }
 
     public void Respawn() 
     {
         // respawn on last checkpoint
+        dead = false;
+        transform.position = lastCheckpoint;
+        Camera.main.transform.position = new Vector3(lastCheckpoint.x, lastCheckpoint.y, Camera.main.transform.position.z);
+    }
+
+    public void Dead()
+    {
+        // die animation
+        // stopp movement        
+        dead = true;
     }
 
     private void HandleMovement(Vector2 direction)
@@ -70,5 +99,22 @@ public class Player : MonoBehaviour
         RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 
                                                 capsuleCollider.direction, 0, Vector2.down, 0.1f, groundLayer);
         return hit.collider != null;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Interactable")
+        {
+            interactable = other.GetComponent<Interactable>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Interactable")
+        {
+            interactable = null;
+        }
     }
 }
