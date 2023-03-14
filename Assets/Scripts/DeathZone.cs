@@ -7,6 +7,7 @@ public class DeathZone : MonoBehaviour
     #region Fields
     [SerializeField] GameObject loseManager;
     [SerializeField] bool isAlwaysActive;
+    [SerializeField] GameObject playerCharacter;
     #endregion
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +18,7 @@ public class DeathZone : MonoBehaviour
             Debug.Log("Player Entered Deathzone");
             this.GetComponent<Collider2D>().isTrigger = false;
             loseManager.GetComponent<LoseManager>().UpdateLose();
+            playerCharacter.GetComponent<Player>().Dead();
         }
     }
     public void ResetTrigger()

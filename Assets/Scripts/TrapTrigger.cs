@@ -31,7 +31,7 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.PushPlayer:
                     break;
                 case typeOfTrap.InstaDeath:
-                    //playerCharacter.GetComponent<Player>().isDead = true;
+                    playerCharacter.GetComponent<Player>().Dead();
                     //play trap animation
                     //wait till animation ends
                     break;
@@ -48,7 +48,7 @@ public class TrapTrigger : MonoBehaviour
     }
     private void DisappearGroundTrap()
     {
-        trapToTrigger.GetComponent<Rigidbody2D>().
+        //trapToTrigger.GetComponent<Rigidbody2D>().
     }
     #endregion
     #endregion
