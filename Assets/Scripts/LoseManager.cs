@@ -12,8 +12,13 @@ public class LoseManager : MonoBehaviour
     [SerializeField] Text deathCounterText;
     [SerializeField] Canvas losingScreen;
     [SerializeField] GameObject playerCharacter;
+    [SerializeField] float timeToReset;
     #endregion
     #region Methods
+    public void Start()
+    {
+        timeToReset = Time.timeScale;
+    }
     /// <summary>
     /// increases Death Counter and shows losing Canvas
     /// </summary>
@@ -29,6 +34,7 @@ public class LoseManager : MonoBehaviour
     /// </summary>
     public void ResetButton()
     {
+        Time.timeScale = timeToReset;
         string thisSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(thisSceneName);
     }
