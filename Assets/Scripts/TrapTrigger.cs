@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class TrapTrigger : MonoBehaviour
     [SerializeField] typeOfTrap trapType;
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] GameObject loseManager;
+
+    private bool moveGround = false;
     #endregion
     #region Methods
     /// <summary>
@@ -62,10 +65,23 @@ public class TrapTrigger : MonoBehaviour
 
     private void PickFlower()
     {
-        Debug.Log("test");
-        trapToTrigger.transform.Translate(Vector3.forward*2*Time.deltaTime);
+        moveGround = true;
+    }
+
+    private void MoveGround()
+    {
+        
     }
     
     #endregion
     #endregion
+
+    private void Update()
+    {
+        if (moveGround)
+        {
+            if(trapToTrigger.transform.position.y > -100)
+                trapToTrigger.transform.Translate(Vector3.down*10*Time.deltaTime);
+        }
+    }
 }
