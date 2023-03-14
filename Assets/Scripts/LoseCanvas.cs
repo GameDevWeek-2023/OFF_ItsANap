@@ -10,13 +10,13 @@ public class LoseCanvas : MonoBehaviour
     [SerializeField] Canvas loseScreen;
     #endregion
     #region Methods
+    /// <summary>
+    /// Reloads this Scene, resetting everything
+    /// </summary>
     public void ResetButton()
     {
-        //playerCharacter.GetComponent<Player>().Respawn();
-        TrapTrigger[] trapsToReset = GameObject.FindObjectsOfType(TrapTrigger);
-        DeathZone[] zonesToReset = GameObject.FindObjectsOfType(DeathZone);
-        loseScreen.enabled = false;
-
+        string thisSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(thisSceneName);
     }
     public void MenuButton(string sceneToLoad)
     {
