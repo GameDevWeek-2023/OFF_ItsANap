@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,11 +11,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
 
-    private float moveForce = 15f;
-    private float jumpForce = 40f;
-    private float maxSpeed = 5f;
-    private Interactable interactable = null;
-    private bool dead = false;
+    public float moveForce = 15f;
+    public float jumpForce = 40f;
+    public float maxSpeed = 5f;
+    public Interactable interactable = null;
+    public bool dead = false;
     public Vector2 direction;
 
     // last Checkpoint
