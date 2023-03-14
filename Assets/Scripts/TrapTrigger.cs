@@ -38,7 +38,7 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.InstaDeath:
                     //play trap animation
                     //wait till animation ends
-                    KillPlayer();
+                    KillPlayer(1);
                     break;
                 case typeOfTrap.pickFlower:
                     PickFlower();
@@ -48,8 +48,9 @@ public class TrapTrigger : MonoBehaviour
             }
         }
     }
-    private void KillPlayer()
+    private void KillPlayer(float delay)
     {
+        waiter(delay);
         loseManager.GetComponent<LoseManager>().UpdateLose();
     }
     #region TypeOfTraps
@@ -83,5 +84,10 @@ public class TrapTrigger : MonoBehaviour
             if(trapToTrigger.transform.position.y > -100)
                 trapToTrigger.transform.Translate(Vector3.down*10*Time.deltaTime);
         }
+    }
+    
+    IEnumerator waiter(float sec)
+    {
+        yield return new WaitForSeconds(sec);
     }
 }
