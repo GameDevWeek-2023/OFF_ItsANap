@@ -8,15 +8,18 @@ public class LoseManager : MonoBehaviour
 {
     #region Fields
     public int loseCounter = 0;
-    [SerializeField] Text loseText;
+    [SerializeField] Text deathCounterText;
     [SerializeField] Canvas losingScreen;
     #endregion
     #region Methods
+    /// <summary>
+    /// increases Death Counter and shows losing Canvas
+    /// </summary>
     public void UpdateLose()
     {
         loseCounter++;
-        loseText.text = Convert.ToString(loseCounter);
-        //show losingscreen
+        deathCounterText.text = Convert.ToString(loseCounter);
+        losingScreen.enabled = true;
     }
     #endregion
 }
