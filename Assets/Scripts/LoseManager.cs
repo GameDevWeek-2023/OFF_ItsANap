@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoseManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LoseManager : MonoBehaviour
     public int loseCounter = 0;
     [SerializeField] Text deathCounterText;
     [SerializeField] Canvas losingScreen;
+    [SerializeField] GameObject playerCharacter;
     #endregion
     #region Methods
     /// <summary>
@@ -20,6 +22,19 @@ public class LoseManager : MonoBehaviour
         loseCounter++;
         deathCounterText.text = Convert.ToString(loseCounter);
         losingScreen.enabled = true;
+        playerCharacter.GetComponent<Player>().Dead();
+    }
+    /// <summary>
+    /// Reloads this Scene, resetting everything
+    /// </summary>
+    public void ResetButton()
+    {
+        string thisSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(thisSceneName);
+    }
+    public void MenuButton(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
     #endregion
 }

@@ -3,7 +3,10 @@ guid: 624315bfa26287a41b8740d4d0025598
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathCounterText: {instanceID: 0}
+  - losingScreen: {instanceID: 0}
+  - playerCharacter: {fileID: 7264829148437872800, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
