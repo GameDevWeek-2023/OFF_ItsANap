@@ -9,7 +9,8 @@ public class TrapTrigger : MonoBehaviour
     {
         DisappearGround,
         PushPlayer,
-        InstaDeath
+        InstaDeath,
+        pickFlower
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] GameObject trapToTrigger;
@@ -20,7 +21,7 @@ public class TrapTrigger : MonoBehaviour
     /// Checks if the object colliding is the player and sets it to true
     /// </summary>
     /// <param name="collision">the object entering the collider</param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -35,6 +36,9 @@ public class TrapTrigger : MonoBehaviour
                     //play trap animation
                     //wait till animation ends
                     KillPlayer();
+                    break;
+                case typeOfTrap.pickFlower:
+                    PickFlower();
                     break;
                 default:
                     break;
@@ -55,6 +59,13 @@ public class TrapTrigger : MonoBehaviour
         //push into direction
         //trapToTrigger.GetComponent<Transform>().
     }
+
+    private void PickFlower()
+    {
+        Debug.Log("test");
+        trapToTrigger.transform.Translate(Vector3.forward*2*Time.deltaTime);
+    }
+    
     #endregion
     #endregion
 }
