@@ -13,7 +13,7 @@ public class TrapTrigger : MonoBehaviour
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] GameObject trapToTrigger;
-    [SerializeField] GameObject playerCharacter;
+    [SerializeField] GameObject loseManager;
     #endregion
     #region Methods
     /// <summary>
@@ -27,28 +27,33 @@ public class TrapTrigger : MonoBehaviour
             switch (trapType)
             {
                 case typeOfTrap.DisappearGround:
+                    DisappearGroundTrap();
                     break;
                 case typeOfTrap.PushPlayer:
                     break;
                 case typeOfTrap.InstaDeath:
-                    playerCharacter.GetComponent<Player>().Dead();
                     //play trap animation
                     //wait till animation ends
+                    KillPlayer();
                     break;
                 default:
                     break;
             }
         }
     }
-    #region TypeOfTraps
-    private void ResetTrap()
+    private void KillPlayer()
     {
-        //stop or reset animation
-        //show former sprite
+        loseManager.GetComponent<LoseManager>().UpdateLose();
     }
+    #region TypeOfTraps
     private void DisappearGroundTrap()
     {
-        //trapToTrigger.GetComponent<Rigidbody2D>().
+        trapToTrigger.GetComponent<GameObject>().SetActive(false);
+    }
+    private void PushPlayerTrap()
+    {
+        //push into direction
+        //trapToTrigger.GetComponent<Transform>().
     }
     #endregion
     #endregion

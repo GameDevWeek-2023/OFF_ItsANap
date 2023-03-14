@@ -6,8 +6,6 @@ public class DeathZone : MonoBehaviour
 {
     #region Fields
     [SerializeField] GameObject loseManager;
-    [SerializeField] bool isAlwaysActive;
-    [SerializeField] GameObject playerCharacter;
     #endregion
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,14 +14,15 @@ public class DeathZone : MonoBehaviour
         {
             //disable deathzone and count another loss
             Debug.Log("Player Entered Deathzone");
+            //set on false so it doesn't get triggered multiple times
             this.GetComponent<Collider2D>().isTrigger = false;
-            loseManager.GetComponent<LoseManager>().UpdateLose();
-            playerCharacter.GetComponent<Player>().Dead();
+            //update death counter and kill player
+            KillPlayer();
         }
     }
-    public void ResetTrigger()
+    private void KillPlayer()
     {
-        this.GetComponent<Collider2D>().isTrigger = isAlwaysActive;
+        loseManager.GetComponent<LoseManager>().UpdateLose();
     }
     #endregion
 }

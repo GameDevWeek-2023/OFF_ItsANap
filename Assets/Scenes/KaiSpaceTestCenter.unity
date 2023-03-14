@@ -297,10 +297,10 @@ RectTransform:
   m_Father: {fileID: 364826258}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 150, y: -35}
-  m_SizeDelta: {x: 160, y: 70}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -55, y: 0}
+  m_SizeDelta: {x: 110, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187206077
 MonoBehaviour:
@@ -329,7 +329,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -482,8 +482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230, y: -35}
-  m_SizeDelta: {x: 464.5, y: 70}
+  m_AnchoredPosition: {x: 175, y: -35}
+  m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364826259
 MonoBehaviour:
@@ -666,7 +666,6 @@ GameObject:
   m_Component:
   - component: {fileID: 600333426}
   - component: {fileID: 600333425}
-  - component: {fileID: 600333427}
   m_Layer: 0
   m_Name: LoseManager
   m_TagString: Untagged
@@ -689,6 +688,7 @@ MonoBehaviour:
   loseCounter: 0
   deathCounterText: {fileID: 187206077}
   losingScreen: {fileID: 1891516545}
+  playerCharacter: {fileID: 1760305429}
 --- !u!4 &600333426
 Transform:
   m_ObjectHideFlags: 0
@@ -704,20 +704,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &600333427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600333424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1387d87582914c4449ec82a3a5094460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 1760305429}
-  loseScreen: {fileID: 1891516545}
 --- !u!1 &725682223
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,8 +788,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600333427}
-        m_TargetAssemblyTypeName: LoseCanvas, Assembly-CSharp
+      - m_Target: {fileID: 600333425}
+        m_TargetAssemblyTypeName: LoseManager, Assembly-CSharp
         m_MethodName: MenuButton
         m_Mode: 5
         m_Arguments:
@@ -1164,8 +1150,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600333427}
-        m_TargetAssemblyTypeName: LoseCanvas, Assembly-CSharp
+      - m_Target: {fileID: 600333425}
+        m_TargetAssemblyTypeName: LoseManager, Assembly-CSharp
         m_MethodName: ResetButton
         m_Mode: 1
         m_Arguments:
@@ -1304,10 +1290,10 @@ RectTransform:
   m_Father: {fileID: 364826258}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: 0}
-  m_SizeDelta: {x: 300, y: 70}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 125, y: 0}
+  m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128751019
 MonoBehaviour:
@@ -1798,7 +1784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseManager: {fileID: 600333424}
-  isAlwaysActive: 1
 --- !u!61 &1624121582
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2159,7 +2144,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891516542}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 26946970}
