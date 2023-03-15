@@ -16,7 +16,7 @@ public class TrapTrigger : MonoBehaviour
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] GameObject trapToTrigger;
-    [SerializeField] GameObject loseManager;
+    [SerializeField] LoseManager loseManager;
 
     private bool moveGroundDown = false;
     private bool moveGroundUp = false;
@@ -57,7 +57,7 @@ public class TrapTrigger : MonoBehaviour
     private void KillPlayer(float delay)
     {
         waiter(delay);
-        loseManager.GetComponent<LoseManager>().UpdateLose();
+        loseManager.UpdateLose();
     }
     #region TypeOfTraps
     private void DisappearGroundTrap()

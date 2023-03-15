@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour
 {
     #region Fields
-    [SerializeField] GameObject loseManager;
+    [SerializeField] LoseManager loseManager;
     #endregion
     #region Methods
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +22,7 @@ public class DeathZone : MonoBehaviour
     }
     private void KillPlayer()
     {
-        loseManager.GetComponent<LoseManager>().UpdateLose();
+        loseManager.UpdateLose();
     }
     #endregion
 }

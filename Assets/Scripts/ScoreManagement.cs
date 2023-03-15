@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ScoreManagement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] LoseManager loseManager;
+    [SerializeField] int currentPlayerScore;
+    [SerializeField] int oldPlayerScore;
+    [SerializeField] string scoreKey = "Deathscore";
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OnDisable()
     {
         
     }
