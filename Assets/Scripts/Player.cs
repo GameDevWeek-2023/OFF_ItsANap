@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private CapsuleCollider2D capsuleCollider;
 
     [SerializeField] private LayerMask groundLayer;
+    public delegate void Jump();
+    public Jump jump;
 
     public float moveForce = 15f;
     public float jumpForce = 5f;
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        jump += HandleJump;
     }
 
     // Update is called once per frame
@@ -52,7 +54,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("D");
             // move right
             direction = Vector2.right;
             HandleMovement(Vector2.right);
@@ -62,7 +63,8 @@ public class Player : MonoBehaviour
             if (interactable == null)
             {
                 // Jump
-                HandleJump();
+                //HandleJump();
+                jump?.Invoke();
             }
             else
             {
