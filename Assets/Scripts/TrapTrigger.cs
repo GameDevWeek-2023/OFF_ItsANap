@@ -17,7 +17,8 @@ public class TrapTrigger : MonoBehaviour
         DisappearGround,
         MovePlatform,
         InstaDeath,
-        Jump
+        Jump,
+        InvertGravity
     }
     enum direction
     {
@@ -58,6 +59,9 @@ public class TrapTrigger : MonoBehaviour
                     break;
                 case typeOfTrap.Jump:
                     dontJump = true;
+                    break;
+                case typeOfTrap.InvertGravity:
+                    Physics2D.gravity *= -1;
                     break;
                 default:
                     break;

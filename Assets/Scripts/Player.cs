@@ -21,6 +21,13 @@ public class Player : MonoBehaviour
 
     public bool flowerCollected = false;
 
+    private Vector2 up {
+        get { return -1 * Physics2D.gravity.normalized; }
+    }
+    private Vector2 down {
+        get { return Physics2D.gravity.normalized; }
+    }
+
     // last Checkpoint
     [SerializeField] private Vector2 lastCheckpoint;
 
@@ -98,13 +105,13 @@ public class Player : MonoBehaviour
     private void HandleJump()
     {
         if (!onGround()) return;
-        rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddRelativeForce(up * jumpForce, ForceMode2D.Impulse);
     }
 
     public bool onGround()
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 
-                                                capsuleCollider.direction, 0, Vector2.down, 0.1f, groundLayer);
+                                                capsuleCollider.direction, 0, down, 0.1f, groundLayer);
         return hit.collider != null;
     }
 
