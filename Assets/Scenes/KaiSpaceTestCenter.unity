@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 26946971}
   - component: {fileID: 26946970}
   - component: {fileID: 26946969}
+  - component: {fileID: 26946972}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,6 +208,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26946972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26946968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4957fac24e5c42a4fad2f26a7a0d8fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1760305430}
+  offset: 5
+  offsetSmoothing: 1.5
 --- !u!1001 &38200260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,8 +770,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052931633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 1, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 8, y: -1, z: 90}
+  m_LocalScale: {x: 6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1332,6 +1348,7 @@ MonoBehaviour:
   trapToTrigger: {fileID: 1001767366}
   loseManager: {fileID: 600333425}
   moveGround: 0
+  dontJump: 0
 --- !u!1001 &1760305428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1398,6 +1415,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7264829148437872800, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
   m_PrefabInstance: {fileID: 1760305428}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1760305430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7264829148437872828, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
+  m_PrefabInstance: {fileID: 1760305428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760305429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9aaa236e9ef8ea4b9e471a15495c966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1769918908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1688,6 +1716,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 26946970}
+    - target: {fileID: 1517052648988850943, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1517052649708778063, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
