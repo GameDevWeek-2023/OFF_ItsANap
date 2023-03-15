@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public float moveForce = 15f;
     public float jumpForce = 5f;
     public float maxSpeed = 5f;
-    private float eps = 1f;
     public Interactable interactable = null;
     public bool dead = false;
     public Vector2 direction;
@@ -73,14 +72,6 @@ public class Player : MonoBehaviour
             
         }
 
-        if (rb.velocity.y > eps)
-        {
-            capsuleCollider.enabled = false;
-        }
-        else
-        {
-            capsuleCollider.enabled = true;
-        }
     }
 
     public void Respawn() 
