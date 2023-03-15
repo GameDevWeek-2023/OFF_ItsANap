@@ -4,29 +4,21 @@ using UnityEngine;
 
 public class InvertGravity : MonoBehaviour
 {
-   
+    public GameObject stairs;
    void Awake()
    {
         if (GetComponent<BoxCollider2D>() == null)
         {
             Debug.LogError("Add Trigger to " + name);
         }
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer spriteRenderer in spriteRenderers) spriteRenderer.enabled = false;
+        stairs.SetActive(false);
    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag != "Player") return;
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer spriteRenderer in spriteRenderers) spriteRenderer.enabled = true;
-        Physics2D.gravity *= -1;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag != "Player") return;
+        stairs.SetActive(true);
         Physics2D.gravity *= -1;
     }
 }
