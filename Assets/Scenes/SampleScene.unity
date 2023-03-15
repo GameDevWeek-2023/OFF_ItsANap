@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 362967028}
   - component: {fileID: 362967027}
-  - component: {fileID: 362967026}
   - component: {fileID: 362967025}
+  - component: {fileID: 362967029}
   m_Layer: 0
   m_Name: Stairs
   m_TagString: Untagged
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.1647015, y: -2.518121}
@@ -168,25 +168,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.329403, y: 4.0040727}
   m_EdgeRadius: 0
---- !u!114 &362967026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362967024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af9e947da4239c478425317e1144d92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trapType: 4
-  triggerDirection: 0
-  travelDistance: 0
-  trapToTrigger: {fileID: 362967024}
-  loseManager: {fileID: 1927618445}
-  moveGround: 0
-  dontJump: 0
 --- !u!50 &362967027
 Rigidbody2D:
   serializedVersion: 4
@@ -225,6 +206,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &362967029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362967024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf4bd27d30e46b45b6ba8d1f57126c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452345324
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +570,7 @@ GameObject:
   - component: {fileID: 1003411565}
   - component: {fileID: 1003411566}
   - component: {fileID: 1003411567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,9 +703,9 @@ MonoBehaviour:
   triggerDirection: 0
   travelDistance: 0
   trapToTrigger: {fileID: 0}
-  loseManager: {fileID: 0}
   moveGround: 0
   dontJump: 0
+  rotationTrigger: 0
 --- !u!4 &1149891885
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,7 +1019,7 @@ GameObject:
   - component: {fileID: 1912676497}
   - component: {fileID: 1912676498}
   - component: {fileID: 1912676499}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e45c1ce48925cc4f8be0e3789c99c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseManager: {fileID: 1927618443}
 --- !u!61 &2005181829
 BoxCollider2D:
   m_ObjectHideFlags: 0
