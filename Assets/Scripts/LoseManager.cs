@@ -43,6 +43,7 @@ public class LoseManager : MonoBehaviour
     }
     public void MenuButton(string sceneToLoad)
     {
+        Time.timeScale = timeToReset;
         SceneManager.LoadScene(sceneToLoad);
     }
     public void UpdateCounterText()

@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class TrapTrigger : MonoBehaviour
 {
-    private Player player;
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
-
     #region Fields
     enum typeOfTrap
     {
@@ -18,24 +12,61 @@ public class TrapTrigger : MonoBehaviour
         MovePlatform,
         InstaDeath,
         Jump,
-        InvertGravity
+        RotateTrap
     }
     enum direction
     {
         up,
         right,
         down,
-        left
+        left,
+        clockwise,
+        counterclockwise
     }
     [SerializeField] typeOfTrap trapType;
+    /// <summary>
+    /// determines what direction a MoveTrap moves, or if a RotationTrap rotates clockwise or counterclockwise
+    /// </summary>
     [SerializeField] direction triggerDirection;
+    /// <summary>
+    /// determines how many units the MovePlatform Trap travels
+    /// or how many degrees the RotationTrap rotates
+    /// </summary>
     [SerializeField] float travelDistance;
     [SerializeField] GameObject trapToTrigger;
-    [SerializeField] LoseManager loseManager;
     [SerializeField] bool moveGround = false;
     [SerializeField] bool dontJump = false;
+    [SerializeField] bool rotationTrigger = false;
+    private Player player;
+    private LoseManager loseManager;
     #endregion
     #region Methods
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+        loseManager = FindObjectOfType<LoseManager>();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void Update()
+    {
+        if (moveGround)
+        {
+            MoveGround();
+        }
+        if (rotationTrigger)
+        {
+            RotateTheTrap();
+        }
+        if (dontJump)
+        {
+            if (!player.onGround())
+            {
+                Debug.Log("aa");
+                MoveGround();
+            }
+        }
+    }
     /// <summary>
     /// Checks if the object colliding is the player and sets it to true
     /// </summary>
@@ -60,8 +91,8 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.Jump:
                     dontJump = true;
                     break;
-                case typeOfTrap.InvertGravity:
-                    Physics2D.gravity *= -1;
+                case typeOfTrap.RotateTrap:
+                    RotationTrap();
                     break;
                 default:
                     break;
@@ -118,26 +149,52 @@ public class TrapTrigger : MonoBehaviour
                 break;
         }
     }
-    #endregion
-    #endregion
-
-    private void Update()
+    /// <summary>
+    /// activates the rotation and sets up the rotation for clockwise rotations
+    /// </summary>
+    private void RotationTrap()
     {
-        if (moveGround)
+        //check if it wasn't triggered yet
+        if (!rotationTrigger)
         {
-            MoveGround();
-        }
-
-        if (dontJump)
-        {
-            if (!player.onGround())
+            switch (triggerDirection)
             {
-                Debug.Log("aa");
-                MoveGround();
+                //rotates the trap by 1 degree as a setup for the clockwise rotation in RotateTheTrap()
+                case direction.clockwise:
+                    trapToTrigger.transform.localEulerAngles = new Vector3(0, 0, 359);
+                    break;
+                default:
+                    break;
             }
         }
+        rotationTrigger = true;
     }
-    
+    /// <summary>
+    /// Rotates the Trap, call it in Update
+    /// </summary>
+    private void RotateTheTrap()
+    {
+        switch (triggerDirection)
+        {
+            case direction.clockwise:
+                Debug.Log("Im Uhrzeigersinn");
+                if (trapToTrigger.transform.localEulerAngles.z > 360 - travelDistance)
+                {
+                    trapToTrigger.transform.Rotate(new Vector3(0, 0, -25) * Time.deltaTime);
+                }
+                break;
+            case direction.counterclockwise:
+                Debug.Log("Gegen Uhrzeigersinn");
+                if (trapToTrigger.transform.localEulerAngles.z < travelDistance)
+                    trapToTrigger.transform.Rotate(new Vector3(0, 0, 25) * Time.deltaTime);
+                break;
+            default:
+                break;
+        }
+    }
+    #endregion
+    #endregion
+
     IEnumerator waiter(float sec)
     {
         yield return new WaitForSeconds(sec);
