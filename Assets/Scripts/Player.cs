@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             else
             {
                // TODO interact with interactable
-               interactable.interact();
+               interactable.interact(this);
             }
             
         }
@@ -76,6 +76,11 @@ public class Player : MonoBehaviour
         // die animation
         // stopp movement    
         Time.timeScale = 0f; 
+    }
+
+    public void Teleport(Vector2 destionation)
+    {
+        transform.position = destionation;
     }
 
     private void HandleMovement(Vector2 direction)
