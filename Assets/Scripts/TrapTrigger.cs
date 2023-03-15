@@ -21,6 +21,7 @@ public class TrapTrigger : MonoBehaviour
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] direction triggerDirection;
+    [SerializeField] float travelDistance;
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] LoseManager loseManager;
     [SerializeField] bool moveGround = false;
@@ -40,6 +41,7 @@ public class TrapTrigger : MonoBehaviour
                     DisappearGroundTrap();
                     break;
                 case typeOfTrap.MovePlatform:
+                    MovePlatformTrap();
                     break;
                 case typeOfTrap.InstaDeath:
                     //play trap animation
@@ -59,7 +61,7 @@ public class TrapTrigger : MonoBehaviour
     #region TypeOfTraps
     private void DisappearGroundTrap()
     {
-        trapToTrigger.GetComponent<GameObject>().SetActive(false);
+        trapToTrigger.SetActive(false);
     }
     private void MovePlatformTrap()
     {
@@ -73,14 +75,20 @@ public class TrapTrigger : MonoBehaviour
         switch (triggerDirection)
         {
             case direction.up:
+                if (trapToTrigger.transform.position.y < travelDistance)
+                    trapToTrigger.transform.Translate(Vector3.up * 10 * Time.deltaTime);
                 break;
             case direction.right:
+                if (trapToTrigger.transform.position.x < travelDistance)
+                    trapToTrigger.transform.Translate(Vector3.right * 10 * Time.deltaTime);
                 break;
             case direction.down:
-                if (trapToTrigger.transform.position.y > -100)
+                if (trapToTrigger.transform.position.y > -travelDistance)
                     trapToTrigger.transform.Translate(Vector3.down * 10 * Time.deltaTime);
                 break;
             case direction.left:
+                if (trapToTrigger.transform.position.x > -travelDistance)
+                    trapToTrigger.transform.Translate(Vector3.left * 10 * Time.deltaTime);
                 break;
             default:
                 break;

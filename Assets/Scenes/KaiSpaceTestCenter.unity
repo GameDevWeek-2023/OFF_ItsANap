@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 1052931635}
   - component: {fileID: 1052931634}
   m_Layer: 0
-  m_Name: TestCollider (1)
+  m_Name: deathCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1109,6 +1109,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7476145351606931186, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476145351606931186, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5918339
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476145351606931186, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4481132
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
 --- !u!1001 &1611901190
@@ -1182,7 +1194,7 @@ GameObject:
   - component: {fileID: 1624121585}
   - component: {fileID: 1624121586}
   m_Layer: 0
-  m_Name: TestCollider
+  m_Name: TrapCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1314,9 +1326,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af9e947da4239c478425317e1144d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapType: 0
+  trapType: 1
+  triggerDirection: 2
+  travelDistance: 10
   trapToTrigger: {fileID: 1001767366}
   loseManager: {fileID: 600333425}
+  moveGround: 0
 --- !u!1001 &1760305428
 PrefabInstance:
   m_ObjectHideFlags: 0
