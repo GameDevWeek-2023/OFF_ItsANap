@@ -11,13 +11,16 @@ public class TrapTrigger : MonoBehaviour
         DisappearGround,
         PushPlayer,
         InstaDeath,
-        pickFlower
+        pickFlower,
+        moveGroundUp
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] GameObject loseManager;
 
-    private bool moveGround = false;
+    private bool moveGroundDown = false;
+    private bool moveGroundUp = false;
+    
     #endregion
     #region Methods
     /// <summary>
@@ -43,6 +46,9 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.pickFlower:
                     PickFlower();
                     break;
+                case typeOfTrap.moveGroundUp:
+                    MoveGroundUp();
+                    break;
                 default:
                     break;
             }
@@ -66,12 +72,17 @@ public class TrapTrigger : MonoBehaviour
 
     private void PickFlower()
     {
-        moveGround = true;
+        moveGroundDown = true;
     }
 
-    private void MoveGround()
+    private void MoveGroundDown()
     {
-        
+        moveGroundDown = true;
+    }
+    
+    private void MoveGroundUp()
+    {
+        moveGroundUp = true;
     }
     
     #endregion
@@ -79,10 +90,20 @@ public class TrapTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (moveGround)
+        if (moveGroundDown)
         {
             if(trapToTrigger.transform.position.y > -100)
                 trapToTrigger.transform.Translate(Vector3.down*10*Time.deltaTime);
+        }
+
+        if (moveGroundUp)
+        {
+            if (trapToTrigger.transform.position.y < 100)
+            {
+                trapToTrigger.transform.Translate(Vector3.up*20*Time.deltaTime);
+                FindObjectOfType<CameraController>().enabled = false;
+                KillPlayer(3);
+            }
         }
     }
     
