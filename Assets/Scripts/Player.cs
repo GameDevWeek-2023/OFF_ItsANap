@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
+            Debug.Log("D");
             // move right
             direction = Vector2.right;
             HandleMovement(Vector2.right);
@@ -112,6 +114,7 @@ public class Player : MonoBehaviour
         if (other.tag == "Interactable")
         {
             interactable = other.GetComponent<Interactable>();
+            other.GetComponent<Oven>().HoverPlayer(true);
         }
         if (other.tag == "Flower")
         {
@@ -125,6 +128,7 @@ public class Player : MonoBehaviour
         if (other.tag == "Interactable")
         {
             interactable = null;
+            other.GetComponent<Oven>().HoverPlayer(false);
         }
     }
 }
