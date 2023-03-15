@@ -64,6 +64,10 @@ public class TrapTrigger : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Kills the player after a delay
+    /// </summary>
+    /// <param name="delay"></param>
     private void KillPlayer(float delay)
     {
         waiter(delay);
@@ -72,6 +76,7 @@ public class TrapTrigger : MonoBehaviour
     #region TypeOfTraps
     private void DisappearGroundTrap()
     {
+        Debug.Log("platform deaktiviert. lmao git rekt");
         trapToTrigger.SetActive(false);
     }
     private void MovePlatformTrap()
@@ -86,18 +91,22 @@ public class TrapTrigger : MonoBehaviour
         switch (triggerDirection)
         {
             case direction.up:
+                Debug.Log("flieg nach oben");
                 if (trapToTrigger.transform.position.y < travelDistance)
                     trapToTrigger.transform.Translate(Vector3.up * 10 * Time.deltaTime);
                 break;
             case direction.right:
+                Debug.Log("flieg nach rechts");
                 if (trapToTrigger.transform.position.x < travelDistance)
                     trapToTrigger.transform.Translate(Vector3.right * 10 * Time.deltaTime);
                 break;
             case direction.down:
+                Debug.Log("flieg nach unten");
                 if (trapToTrigger.transform.position.y > -travelDistance)
                     trapToTrigger.transform.Translate(Vector3.down * 10 * Time.deltaTime);
                 break;
             case direction.left:
+                Debug.Log("flieg nach links");
                 if (trapToTrigger.transform.position.x > -travelDistance)
                     trapToTrigger.transform.Translate(Vector3.left * 10 * Time.deltaTime);
                 break;

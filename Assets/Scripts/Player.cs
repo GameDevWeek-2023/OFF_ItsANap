@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
         if (other.tag == "Flower")
         {
             flowerCollected = true;
+            Destroy(other.gameObject);
         }
     }
 
@@ -124,10 +125,6 @@ public class Player : MonoBehaviour
         if (other.tag == "Interactable")
         {
             interactable = null;
-        }
-        if (other.tag == "Flower")
-        {
-            Destroy(other.gameObject);
         }
     }
 }
