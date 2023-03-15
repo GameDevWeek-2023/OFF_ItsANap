@@ -60,12 +60,7 @@ public class TrapTrigger : MonoBehaviour
         }
         if (dontJump)
         {
-            Debug.Log("dwa");
-            if (!player.onGround())
-            {
-                Debug.Log("aa");
-                MoveGround();
-            }
+            MoveGround();
         }
     }
     /// <summary>
@@ -91,7 +86,8 @@ public class TrapTrigger : MonoBehaviour
                     StartCoroutine(KillPlayer(1));
                     break;
                 case typeOfTrap.Jump:
-                    dontJump = true;
+                    //dontJump = true;
+                    player.jump += DontJump;
                     break;
                 case typeOfTrap.RotateTrap:
                     RotationTrap();
@@ -100,6 +96,12 @@ public class TrapTrigger : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag != "Player") return;
+        player.jump -= DontJump;
     }
     /// <summary>
     /// Kills the player after a delay
@@ -197,5 +199,10 @@ public class TrapTrigger : MonoBehaviour
     }
     #endregion
     #endregion
+
+    private void DontJump()
+    {
+        dontJump = true;
+    }
 
 }

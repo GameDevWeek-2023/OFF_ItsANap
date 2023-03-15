@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bee : MonoBehaviour
 {
+    [SerializeField] LoseManager loseManager;
+    void Awake()
+    {
+        loseManager = FindObjectOfType<LoseManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {

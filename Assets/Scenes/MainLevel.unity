@@ -2938,7 +2938,7 @@ PrefabInstance:
       objectReference: {fileID: 1746370165}
     - target: {fileID: 1503796237679808301, guid: cdd725a0fc2cacb4392c8d6abc1bc503, type: 3}
       propertyPath: travelDistance
-      value: 180
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1503796237679808301, guid: cdd725a0fc2cacb4392c8d6abc1bc503, type: 3}
       propertyPath: triggerDirection
@@ -11359,32 +11359,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
---- !u!1 &1551188914 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1503796237679808307, guid: cdd725a0fc2cacb4392c8d6abc1bc503, type: 3}
-  m_PrefabInstance: {fileID: 314018018}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1551188919
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551188914}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!1 &1552745114
 GameObject:
   m_ObjectHideFlags: 0
