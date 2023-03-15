@@ -12,11 +12,7 @@ public class TrapTrigger : MonoBehaviour
         MovePlatform,
         InstaDeath,
         Jump,
-<<<<<<< Updated upstream
-        InvertGravity
-=======
         RotateTrap
->>>>>>> Stashed changes
     }
     enum direction
     {
@@ -95,13 +91,8 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.Jump:
                     dontJump = true;
                     break;
-<<<<<<< Updated upstream
-                case typeOfTrap.InvertGravity:
-                    Physics2D.gravity *= -1;
-=======
                 case typeOfTrap.RotateTrap:
                     RotationTrap();
->>>>>>> Stashed changes
                     break;
                 default:
                     break;
