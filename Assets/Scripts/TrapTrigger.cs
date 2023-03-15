@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class TrapTrigger : MonoBehaviour
 {
+    private Player player;
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
+
     #region Fields
     enum typeOfTrap
     {
         DisappearGround,
         MovePlatform,
-        InstaDeath
+        InstaDeath,
+        Jump
     }
     enum direction
     {
@@ -24,6 +31,7 @@ public class TrapTrigger : MonoBehaviour
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] LoseManager loseManager;
     [SerializeField] bool moveGround = false;
+    [SerializeField] bool dontJump = false;
     #endregion
     #region Methods
     /// <summary>
@@ -45,6 +53,9 @@ public class TrapTrigger : MonoBehaviour
                     //play trap animation
                     //wait till animation ends
                     KillPlayer(1);
+                    break;
+                case typeOfTrap.Jump:
+                    dontJump = true;
                     break;
                 default:
                     break;
@@ -94,6 +105,15 @@ public class TrapTrigger : MonoBehaviour
         if (moveGround)
         {
             MoveGround();
+        }
+
+        if (dontJump)
+        {
+            if (!player.onGround())
+            {
+                Debug.Log("aa");
+                MoveGround();
+            }
         }
     }
     
