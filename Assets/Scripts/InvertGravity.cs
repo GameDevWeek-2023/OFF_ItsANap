@@ -19,6 +19,6 @@ public class InvertGravity : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") return;
         stairs.SetActive(true);
-        Physics2D.gravity *= -1;
+        Physics2D.gravity = new Vector2(0,9.81f);
     }
 }

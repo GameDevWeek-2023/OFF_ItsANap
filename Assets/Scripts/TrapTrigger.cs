@@ -60,6 +60,7 @@ public class TrapTrigger : MonoBehaviour
         }
         if (dontJump)
         {
+            Debug.Log("dwa");
             if (!player.onGround())
             {
                 Debug.Log("aa");
@@ -86,7 +87,8 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.InstaDeath:
                     //play trap animation
                     //wait till animation ends
-                    KillPlayer(1);
+                    Debug.Log("a");
+                    StartCoroutine(KillPlayer(1));
                     break;
                 case typeOfTrap.Jump:
                     dontJump = true;
@@ -103,9 +105,10 @@ public class TrapTrigger : MonoBehaviour
     /// Kills the player after a delay
     /// </summary>
     /// <param name="delay"></param>
-    private void KillPlayer(float delay)
+    IEnumerator KillPlayer(float delay)
     {
-        waiter(delay);
+        yield return new WaitForSeconds(delay);
+        Debug.Log("a");
         loseManager.UpdateLose();
     }
     #region TypeOfTraps
@@ -128,22 +131,22 @@ public class TrapTrigger : MonoBehaviour
             case direction.up:
                 Debug.Log("flieg nach oben");
                 if (trapToTrigger.transform.position.y < travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.up * 10 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.up * 20 * Time.deltaTime);
                 break;
             case direction.right:
                 Debug.Log("flieg nach rechts");
                 if (trapToTrigger.transform.position.x < travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.right * 10 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.right * 20 * Time.deltaTime);
                 break;
             case direction.down:
                 Debug.Log("flieg nach unten");
                 if (trapToTrigger.transform.position.y > -travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.down * 10 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.down * 20 * Time.deltaTime);
                 break;
             case direction.left:
                 Debug.Log("flieg nach links");
                 if (trapToTrigger.transform.position.x > -travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.left * 10 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.left * 20 * Time.deltaTime);
                 break;
             default:
                 break;
@@ -195,8 +198,4 @@ public class TrapTrigger : MonoBehaviour
     #endregion
     #endregion
 
-    IEnumerator waiter(float sec)
-    {
-        yield return new WaitForSeconds(sec);
-    }
 }
