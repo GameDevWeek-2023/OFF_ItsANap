@@ -29,7 +29,16 @@ public class EnemyMonster : MonoBehaviour
         if (player == null) return;
         if (followPlayer)
         {
-            Move();
+            if (PlayerCollision())
+            {
+                // kill Player
+                loseManager.UpdateLose();
+            } 
+            else 
+            {
+                Move();
+            }
+            
         }
         if (playerInRange && player.velocity.magnitude < eps) 
         {
@@ -77,5 +86,12 @@ public class EnemyMonster : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         loseManager.UpdateLose();
+    }
+
+    private bool PlayerCollision()
+    {
+        if (player == null) return false;
+        if ((player.transform.position - transform.position).magnitude < eps) return true;
+        return false;
     }
 }
