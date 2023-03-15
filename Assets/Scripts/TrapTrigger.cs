@@ -9,12 +9,6 @@ public class TrapTrigger : MonoBehaviour
     enum typeOfTrap
     {
         DisappearGround,
-<<<<<<< HEAD
-        PushPlayer,
-        InstaDeath,
-        pickFlower,
-        moveGroundUp
-=======
         MovePlatform,
         InstaDeath
     }
@@ -24,20 +18,12 @@ public class TrapTrigger : MonoBehaviour
         right,
         down,
         left
->>>>>>> origin/main
     }
     [SerializeField] typeOfTrap trapType;
     [SerializeField] direction triggerDirection;
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] LoseManager loseManager;
-<<<<<<< HEAD
-
-    private bool moveGroundDown = false;
-    private bool moveGroundUp = false;
-    
-=======
     [SerializeField] bool moveGround = false;
->>>>>>> origin/main
     #endregion
     #region Methods
     /// <summary>
@@ -60,15 +46,6 @@ public class TrapTrigger : MonoBehaviour
                     //wait till animation ends
                     KillPlayer(1);
                     break;
-<<<<<<< HEAD
-                case typeOfTrap.pickFlower:
-                    PickFlower();
-                    break;
-                case typeOfTrap.moveGroundUp:
-                    MoveGroundUp();
-                    break;
-=======
->>>>>>> origin/main
                 default:
                     break;
             }
@@ -86,19 +63,8 @@ public class TrapTrigger : MonoBehaviour
     }
     private void MovePlatformTrap()
     {
-        moveGroundDown = true;
+        moveGround = true;
     }
-<<<<<<< HEAD
-
-    private void MoveGroundDown()
-    {
-        moveGroundDown = true;
-    }
-    
-    private void MoveGroundUp()
-    {
-        moveGroundUp = true;
-=======
     /// <summary>
     /// moves the platform into a selected direction
     /// </summary>
@@ -119,26 +85,15 @@ public class TrapTrigger : MonoBehaviour
             default:
                 break;
         }
->>>>>>> origin/main
     }
     #endregion
     #endregion
 
     private void Update()
     {
-        if (moveGroundDown)
+        if (moveGround)
         {
             MoveGround();
-        }
-
-        if (moveGroundUp)
-        {
-            if (trapToTrigger.transform.position.y < 100)
-            {
-                trapToTrigger.transform.Translate(Vector3.up*20*Time.deltaTime);
-                FindObjectOfType<CameraController>().enabled = false;
-                KillPlayer(3);
-            }
         }
     }
     
