@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    private bool onGround()
+    public bool onGround()
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 
                                                 capsuleCollider.direction, 0, Vector2.down, 0.1f, groundLayer);
