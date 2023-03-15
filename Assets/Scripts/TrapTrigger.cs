@@ -9,18 +9,35 @@ public class TrapTrigger : MonoBehaviour
     enum typeOfTrap
     {
         DisappearGround,
+<<<<<<< HEAD
         PushPlayer,
         InstaDeath,
         pickFlower,
         moveGroundUp
+=======
+        MovePlatform,
+        InstaDeath
+    }
+    enum direction
+    {
+        up,
+        right,
+        down,
+        left
+>>>>>>> origin/main
     }
     [SerializeField] typeOfTrap trapType;
+    [SerializeField] direction triggerDirection;
     [SerializeField] GameObject trapToTrigger;
     [SerializeField] LoseManager loseManager;
+<<<<<<< HEAD
 
     private bool moveGroundDown = false;
     private bool moveGroundUp = false;
     
+=======
+    [SerializeField] bool moveGround = false;
+>>>>>>> origin/main
     #endregion
     #region Methods
     /// <summary>
@@ -36,19 +53,22 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.DisappearGround:
                     DisappearGroundTrap();
                     break;
-                case typeOfTrap.PushPlayer:
+                case typeOfTrap.MovePlatform:
                     break;
                 case typeOfTrap.InstaDeath:
                     //play trap animation
                     //wait till animation ends
                     KillPlayer(1);
                     break;
+<<<<<<< HEAD
                 case typeOfTrap.pickFlower:
                     PickFlower();
                     break;
                 case typeOfTrap.moveGroundUp:
                     MoveGroundUp();
                     break;
+=======
+>>>>>>> origin/main
                 default:
                     break;
             }
@@ -64,16 +84,11 @@ public class TrapTrigger : MonoBehaviour
     {
         trapToTrigger.GetComponent<GameObject>().SetActive(false);
     }
-    private void PushPlayerTrap()
-    {
-        //push into direction
-        //trapToTrigger.GetComponent<Transform>().
-    }
-
-    private void PickFlower()
+    private void MovePlatformTrap()
     {
         moveGroundDown = true;
     }
+<<<<<<< HEAD
 
     private void MoveGroundDown()
     {
@@ -83,8 +98,29 @@ public class TrapTrigger : MonoBehaviour
     private void MoveGroundUp()
     {
         moveGroundUp = true;
+=======
+    /// <summary>
+    /// moves the platform into a selected direction
+    /// </summary>
+    private void MoveGround()
+    {
+        switch (triggerDirection)
+        {
+            case direction.up:
+                break;
+            case direction.right:
+                break;
+            case direction.down:
+                if (trapToTrigger.transform.position.y > -100)
+                    trapToTrigger.transform.Translate(Vector3.down * 10 * Time.deltaTime);
+                break;
+            case direction.left:
+                break;
+            default:
+                break;
+        }
+>>>>>>> origin/main
     }
-    
     #endregion
     #endregion
 
@@ -92,8 +128,7 @@ public class TrapTrigger : MonoBehaviour
     {
         if (moveGroundDown)
         {
-            if(trapToTrigger.transform.position.y > -100)
-                trapToTrigger.transform.Translate(Vector3.down*10*Time.deltaTime);
+            MoveGround();
         }
 
         if (moveGroundUp)

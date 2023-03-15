@@ -13,7 +13,7 @@ public class ScoreManagement : MonoBehaviour
     /// </summary>
     void Start()
     {
-        
+        loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
     }
     
     private void OnDisable()
