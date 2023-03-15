@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e45c1ce48925cc4f8be0e3789c99c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseManager: {fileID: 600333424}
+  loseManager: {fileID: 600333425}
 --- !u!61 &1052931637
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapType: 0
   trapToTrigger: {fileID: 1001767366}
-  loseManager: {fileID: 600333424}
+  loseManager: {fileID: 600333425}
 --- !u!1001 &1760305428
 PrefabInstance:
   m_ObjectHideFlags: 0
