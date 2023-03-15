@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public bool dead = false;
     public Vector2 direction;
 
+    public bool flowerCollected = false;
+
     // last Checkpoint
     [SerializeField] private Vector2 lastCheckpoint;
 
@@ -111,6 +113,10 @@ public class Player : MonoBehaviour
         {
             interactable = other.GetComponent<Interactable>();
         }
+        if (other.tag == "Flower")
+        {
+            flowerCollected = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -118,6 +124,10 @@ public class Player : MonoBehaviour
         if (other.tag == "Interactable")
         {
             interactable = null;
+        }
+        if (other.tag == "Flower")
+        {
+            Destroy(other.gameObject);
         }
     }
 }
