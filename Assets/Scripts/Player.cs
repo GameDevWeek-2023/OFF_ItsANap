@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         dead = true;
         // die animation
         // stopp movement    
-        Time.timeScale = 0f; 
+        Time.timeScale = 0; 
     }
 
     public void Teleport(Vector2 destionation)

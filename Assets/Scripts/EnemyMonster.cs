@@ -33,6 +33,8 @@ public class EnemyMonster : MonoBehaviour
             {
                 // kill Player
                 loseManager.UpdateLose();
+                followPlayer = false;
+                playerInRange = false;
             } 
             else 
             {
