@@ -5,9 +5,13 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour
 {
     #region Fields
-    [SerializeField] LoseManager loseManager;
+    private LoseManager loseManager;
     #endregion
     #region Methods
+    private void Start()
+    {
+        loseManager = FindObjectOfType<LoseManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
