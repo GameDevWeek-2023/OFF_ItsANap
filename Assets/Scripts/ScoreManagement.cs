@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class ScoreManagement : MonoBehaviour
 {
+    #region Fields
     private LoseManager loseManager;
     [SerializeField] Text insertNameField;
+    [SerializeField] Text highScoreListNames;
+    [SerializeField] Text highScoreListNumbers;
     [SerializeField] string scoreKey = "Deathscore";
     private string[] highScoreNames = new string[11];
     private int[] highScoreNumbers = new int[11];
+    #endregion
+    #region Methods
     /// <summary>
     /// Start is called before the first frame update
     /// </summary>
@@ -19,14 +24,21 @@ public class ScoreManagement : MonoBehaviour
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
         loseManager.UpdateCounterText();
     }
-    
+    /// <summary>
+    /// OnDisable is called when the behaviour becomes disabled 
+    /// </summary>
     private void OnDisable()
     {
         PlayerPrefs.SetInt(scoreKey, loseManager.loseCounter);
     }
+    /// <summary>
+    /// Resets the deathcounter to 0, including the PlayerPrefs
+    /// </summary>
     public void ResetScore()
     {
         PlayerPrefs.SetInt(scoreKey, 0);
+        loseManager.loseCounter = 0;
+        loseManager.UpdateCounterText();
     }
     /// <summary>
     /// always overrides last place in highscore list, then sorts the list
@@ -92,4 +104,17 @@ public class ScoreManagement : MonoBehaviour
             PlayerPrefs.SetString(listKey, highScoreNames[listIndex]);
         }
     }
+    private void PrintHighScoreList()
+    {
+        string listKey;
+        highScoreListNames.text = "";
+        highScoreListNumbers.text = "";
+        for (int listIndex = 0; listIndex < 10; listIndex++)
+        {
+            listKey = $"Place {listIndex + 1}";
+            highScoreListNames.text += PlayerPrefs.GetString(listKey, "leer") + "\n";
+            highScoreListNumbers.text += PlayerPrefs.GetInt(listKey, 2500) + "\n";
+        }
+    }
+    #endregion
 }
