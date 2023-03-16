@@ -12,7 +12,8 @@ public class TrapTrigger : MonoBehaviour
         MovePlatform,
         InstaDeath,
         Jump,
-        RotateTrap
+        RotateTrap,
+        Visable
     }
     enum direction
     {
@@ -91,6 +92,9 @@ public class TrapTrigger : MonoBehaviour
                     break;
                 case typeOfTrap.RotateTrap:
                     RotationTrap();
+                    break;
+                case typeOfTrap.Visable:
+                    trapToTrigger.SetActive(true);
                     break;
                 default:
                     break;
