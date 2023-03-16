@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarnivourusPlant : MonoBehaviour
+public class CarnivorousPlant : MonoBehaviour
 {
     [SerializeField] private GameObject window;
     [SerializeField] private float destinationY;
