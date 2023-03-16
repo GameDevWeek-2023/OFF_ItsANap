@@ -6920,22 +6920,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7264829148437872828, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
-      propertyPath: jumpForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264829148437872828, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
-      propertyPath: moveForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264829148437872829, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7264829148437872829, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
-      propertyPath: m_GravityScale
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7264829148437872830, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
       propertyPath: m_RootOrder
       value: 6
