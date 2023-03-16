@@ -38,6 +38,7 @@ public class TrapTrigger : MonoBehaviour
     [SerializeField] bool moveGround = false;
     [SerializeField] bool dontJump = false;
     [SerializeField] bool rotationTrigger = false;
+    [SerializeField] Animator animator;
     private Player player;
     private LoseManager loseManager;
     #endregion
@@ -47,6 +48,10 @@ public class TrapTrigger : MonoBehaviour
         player = FindObjectOfType<Player>();
         loseManager = FindObjectOfType<LoseManager>();
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        if (animator != null)
+        {
+            animator.speed = 0;
+        }
     }
 
     private void Update()
@@ -72,6 +77,10 @@ public class TrapTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (animator != null)
+            {
+                animator.speed = 1;
+            }
             switch (trapType)
             {
                 case typeOfTrap.DisappearGround:
