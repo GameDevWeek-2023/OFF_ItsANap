@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class ScoreManagement : MonoBehaviour
 {
     #region Fields
+    [SerializeField] Canvas highScoreCanvas;
     private LoseManager loseManager;
     [SerializeField] Text insertNameField;
     [SerializeField] Text highScoreListNames;
     [SerializeField] Text highScoreListNumbers;
-    [SerializeField] string scoreKey = "Deathscore";
+    [SerializeField] public string scoreKey = "Deathscore";
     private string[] highScoreNames = new string[11];
     private int[] highScoreNumbers = new int[11];
     #endregion
@@ -23,6 +24,8 @@ public class ScoreManagement : MonoBehaviour
         loseManager = FindObjectOfType<LoseManager>();
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
         loseManager.UpdateCounterText();
+        SortHighScoreList();
+        PrintHighScoreList();
     }
     /// <summary>
     /// OnDisable is called when the behaviour becomes disabled 
@@ -32,22 +35,18 @@ public class ScoreManagement : MonoBehaviour
         PlayerPrefs.SetInt(scoreKey, loseManager.loseCounter);
     }
     /// <summary>
-    /// Resets the deathcounter to 0, including the PlayerPrefs
-    /// </summary>
-    public void ResetScore()
-    {
-        PlayerPrefs.SetInt(scoreKey, 0);
-        loseManager.loseCounter = 0;
-        loseManager.UpdateCounterText();
-    }
-    /// <summary>
     /// always overrides last place in highscore list, then sorts the list
     /// </summary>
-    public void SaveScore()
+    public void SubmitScore()
     {
         highScoreNames[10] = insertNameField.text;
         highScoreNumbers[10] = loseManager.loseCounter;
         SortHighScoreList();
+        SaveHighScoreList();
+    }
+    public void HideHighScoreButton()
+    {
+        highScoreCanvas.enabled = false;
     }
     /// <summary>
     /// Fills highScoreNames and highScoreNumbers with saved values from PlayerPrefs
@@ -55,15 +54,16 @@ public class ScoreManagement : MonoBehaviour
     private void GetHighScores()
     {
         string listKey;
+        //using a for instead of foreach loop because that'd get ALL scores instead of 10 out 11
         for (int listIndex = 0; listIndex < 10; listIndex++)
         {
             listKey = $"Place {listIndex + 1}";
             highScoreNumbers[listIndex] = PlayerPrefs.GetInt(listKey, 2500);
-            highScoreNames[listIndex] = PlayerPrefs.GetString(listKey, "leer");
+            highScoreNames[listIndex] = PlayerPrefs.GetString(listKey, "empty");
         }
     }
     /// <summary>
-    /// sorts the high score list from lowest to highest
+    /// sorts the high score list from lowest to highest, then saves it
     /// </summary>
     private void SortHighScoreList()
     {
@@ -104,6 +104,9 @@ public class ScoreManagement : MonoBehaviour
             PlayerPrefs.SetString(listKey, highScoreNames[listIndex]);
         }
     }
+    /// <summary>
+    /// prints the names and scores in their respective text fields
+    /// </summary>
     private void PrintHighScoreList()
     {
         string listKey;
@@ -112,7 +115,7 @@ public class ScoreManagement : MonoBehaviour
         for (int listIndex = 0; listIndex < 10; listIndex++)
         {
             listKey = $"Place {listIndex + 1}";
-            highScoreListNames.text += PlayerPrefs.GetString(listKey, "leer") + "\n";
+            highScoreListNames.text += PlayerPrefs.GetString(listKey, "empty") + "\n";
             highScoreListNumbers.text += PlayerPrefs.GetInt(listKey, 2500) + "\n";
         }
     }
