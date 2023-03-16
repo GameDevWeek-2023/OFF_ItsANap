@@ -25,7 +25,6 @@ public class SpikeBlock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag != "Player") return;
-        Debug.Log("Trigger");
         anim.SetInteger("direction", (int) direction);
     }
 }
