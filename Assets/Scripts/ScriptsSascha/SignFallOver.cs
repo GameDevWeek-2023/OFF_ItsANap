@@ -8,14 +8,19 @@ public class SignFallOver : MonoBehaviour
     private bool fallOver;
     public GameObject bla;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (transform.localEulerAngles.x < 80)
-            {
-                transform.Rotate(new Vector3(90, 0, 0) * Time.deltaTime*(transform.localEulerAngles.x+1)/10);
-            }
+            fallOver = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (transform.localEulerAngles.x < 80 && fallOver)
+        {
+            transform.Rotate(new Vector3(90, 0, 0) * Time.deltaTime*(transform.localEulerAngles.x+1)/10);
         }
     }
 }
