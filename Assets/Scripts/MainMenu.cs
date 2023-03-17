@@ -30,6 +30,8 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         DeathCounter.enabled = true;
+        submitButton.enabled = true;
+        insertNameField.enabled = true;
         SceneManager.LoadScene("MainLevel");
     }
     public void OptionsButton()

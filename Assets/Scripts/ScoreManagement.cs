@@ -3,127 +3,100 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.IO;
 
 public class ScoreManagement : MonoBehaviour
 {
     #region Fields
     [SerializeField] Canvas highScoreCanvas;
-    private LoseManager loseManager;
-    [SerializeField] Text insertNameField;
-    [SerializeField] Text highScoreListNames;
-    [SerializeField] Text highScoreListNumbers;
+    [SerializeField] Text highScoreTextNames;
+    [SerializeField] Text highScoreTextNumbers;
     [SerializeField] Button submitButton;
     [SerializeField] InputField inputNameField;
     public string scoreKey = "Deathscore";
-    private string[] highScoreNames = new string[11];
-    private int[] highScoreNumbers = new int[11];
+    private LoseManager loseManager;
+    #region FilePath
+    private string filePath;
+    private string fileContent = "";
+    private Dictionary<int, string> highScoreNames = new Dictionary<int, string>(11);
+    private Dictionary<int, int> highScoreNumbers = new Dictionary<int, int>(11);
+    #endregion
     #endregion
     #region Methods
     /// <summary>
     /// Start is called before the first frame update
     /// </summary>
-    void Start()
+    private void Start()
     {
         loseManager = FindObjectOfType<LoseManager>();
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
         loseManager.UpdateCounterText();
-        PrintHighScoreList();
+        filePath = Application.dataPath + "/Highscores.txt";
+        //Checks if the highscore file exists and creates one if it doesn't
+        if (!File.Exists(filePath))
+        {
+            File.Create(filePath);
+        }
     }
-    /// <summary>
-    /// OnDisable is called when the behaviour becomes disabled 
-    /// </summary>
-    private void OnDisable()
+    #region Buttons
+    public void SubmitButton()
     {
-        PlayerPrefs.SetInt(scoreKey, loseManager.loseCounter);
-    }
-    /// <summary>
-    /// always overrides last place in highscore list, then sorts the list
-    /// </summary>
-    public void SubmitScore()
-    {
-        highScoreNames[10] = insertNameField.text;
+        highScoreNames[10] = inputNameField.textComponent.text;
         highScoreNumbers[10] = loseManager.loseCounter;
-        SortHighScoreList();
-        SaveHighScoreList();
-        PrintHighScoreList();
+        SortDictionaries();
+        inputNameField.enabled = false;
+        submitButton.enabled = false;
     }
     public void HideHighScoreButton()
     {
-        submitButton.enabled = true;
         inputNameField.enabled = true;
+        submitButton.enabled = true;
         highScoreCanvas.enabled = false;
     }
+    #endregion
     /// <summary>
-    /// Fills highScoreNames and highScoreNumbers with saved values from PlayerPrefs
+    /// Rewrites the highscore file
     /// </summary>
-    private void GetHighScores()
+    private void OverrideFile()
     {
-        string listKey;
-        //using a for instead of foreach loop because that'd get ALL scores instead of 10 out 11
-        for (int listIndex = 0; listIndex < 10; listIndex++)
-        {
-            listKey = $"Place {listIndex + 1}";
-            highScoreNumbers[listIndex] = PlayerPrefs.GetInt(listKey, 2500);
-            highScoreNames[listIndex] = PlayerPrefs.GetString(listKey, "empty");
-            Debug.Log($"{highScoreNumbers[listIndex]} {highScoreNames[listIndex]}");
-        }
+        File.WriteAllText(filePath, fileContent);
     }
+
     /// <summary>
-    /// sorts the high score list from lowest to highest, then saves it
+    /// sorts both dictionaries using bubble sort in ascending order
     /// </summary>
-    private void SortHighScoreList()
+    private void SortDictionaries()
     {
-        int tempScoreSave;
         string tempNameSave;
-        GetHighScores();
+        int tempNumberSave;
         for (int firstPos = 0; firstPos < 11; firstPos++)
         {
             for(int secondPos = firstPos + 1; secondPos < 11; secondPos++)
             {
-                //if highest score has more deaths
-                if (highScoreNumbers[firstPos] > highScoreNumbers[secondPos])
+                if(highScoreNumbers[firstPos] > highScoreNumbers[secondPos])
                 {
-                    //temporarily save stats from first place
-                    tempScoreSave = highScoreNumbers[firstPos];
+                    //save first position in tempSaves
                     tempNameSave = highScoreNames[firstPos];
-                    //save stats from second place in first place
-                    highScoreNumbers[firstPos] = highScoreNumbers[secondPos];
+                    tempNumberSave = highScoreNumbers[firstPos];
+                    //override first postion with values from second position
                     highScoreNames[firstPos] = highScoreNames[secondPos];
-                    //put stats saved from previous first place into second place
-                    highScoreNumbers[secondPos] = tempScoreSave;
+                    highScoreNumbers[firstPos] = highScoreNumbers[secondPos];
+                    //override second position with formerly first values
                     highScoreNames[secondPos] = tempNameSave;
+                    highScoreNumbers[secondPos] = tempNumberSave;
                 }
             }
-            Debug.Log($"{highScoreNumbers[firstPos]} {highScoreNames[firstPos]}");
-        }
-        SaveHighScoreList();
-    }
-    /// <summary>
-    /// Saves the highscores and names of the highscore list, except for the last place (index 10)
-    /// </summary>
-    private void SaveHighScoreList()
-    {
-        string listKey;
-        for(int listIndex = 0; listIndex < 10; listIndex++)
-        {
-            listKey = $"Place {listIndex + 1}";
-            PlayerPrefs.SetInt(listKey, highScoreNumbers[listIndex]);
-            PlayerPrefs.SetString(listKey, highScoreNames[listIndex]);
         }
     }
     /// <summary>
-    /// prints the names and scores in their respective text fields
+    /// overrides the filecontent string with values from the dictionaries
     /// </summary>
-    private void PrintHighScoreList()
+    private void DictionariesToString()
     {
-        string listKey;
-        highScoreListNames.text = "";
-        highScoreListNumbers.text = "";
-        for (int listIndex = 0; listIndex < 10; listIndex++)
+        fileContent = "";
+        for(int index = 0; index < 11; index++)
         {
-            listKey = $"Place {listIndex + 1}";
-            highScoreListNames.text += highScoreNames[listIndex] + "\n";
-            highScoreListNumbers.text += highScoreNumbers[listIndex] + "\n";
+            fileContent += highScoreNames[index] + ";;" + highScoreNumbers + ";;";
         }
     }
     #endregion

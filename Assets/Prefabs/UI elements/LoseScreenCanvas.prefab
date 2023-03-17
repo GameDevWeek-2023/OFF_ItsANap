@@ -213,7 +213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry
+  m_Text: (R)etry
 --- !u!1 &1517052648490443497
 GameObject:
   m_ObjectHideFlags: 0
