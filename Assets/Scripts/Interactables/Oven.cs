@@ -8,9 +8,16 @@ public class Oven : Interactable
     [SerializeField] private Vector2 destination;
     [SerializeField] private SpriteRenderer openSprite;
     [SerializeField] private SpriteRenderer closedSprite;
+    [SerializeField] private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public override void interact(Player player)
     {
         player.Teleport(destination);
+        audioSource.Play();
     }
 
     public void HoverPlayer(bool b)

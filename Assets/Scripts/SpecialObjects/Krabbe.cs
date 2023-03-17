@@ -11,6 +11,7 @@ public class Krabbe : MonoBehaviour
     [SerializeField] private LoseManager loseManager;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private AudioSource audioSource;
     private float originPosition;
     private Vector3 destination;
     private bool windowDown = false;
@@ -20,6 +21,7 @@ public class Krabbe : MonoBehaviour
     {
         loseManager = FindObjectOfType<LoseManager>();
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
 
         animator.speed = 0;
         boxCollider.enabled = false;
@@ -46,6 +48,7 @@ public class Krabbe : MonoBehaviour
         
         
         animator.speed = 1;
+        audioSource.Play();
         spriteRenderer.enabled = true;
         boxCollider.enabled =true;
         loseManager.UpdateLose();

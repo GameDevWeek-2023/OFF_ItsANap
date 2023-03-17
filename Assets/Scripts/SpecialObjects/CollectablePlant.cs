@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class CollectablePlant : MonoBehaviour
 {
     [SerializeField] private Text text;
+    [SerializeField] private AudioSource audioSource;
     private Player player;
     
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<Text>();
+        audioSource = GetComponent<AudioSource>();
         text.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class CollectablePlant : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             player.flowerCollected = true;
+            audioSource.Play();
             Destroy(gameObject);
         }
     }

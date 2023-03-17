@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private CapsuleCollider2D capsuleCollider;
 
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioSource dieSound;
+    [SerializeField] private AudioSource jumpSound;
     public delegate void Jump();
     public Jump jump;
 
@@ -85,6 +87,7 @@ public class Player : MonoBehaviour
     public void Dead()
     {
         dead = true;
+        dieSound.Play();
         // die animation
         // stopp movement    
         //Time.timeScale = 0; 
@@ -118,6 +121,7 @@ public class Player : MonoBehaviour
     {
         if (!onGround()) return;
         rb.AddRelativeForce(up * jumpForce, ForceMode2D.Impulse);
+        jumpSound.Play();
     }
 
     public bool onGround()
