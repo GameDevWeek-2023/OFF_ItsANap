@@ -63,12 +63,10 @@ public class Player : MonoBehaviour
             if (interactable == null)
             {
                 // Jump
-                //HandleJump();
                 jump?.Invoke();
             }
             else
             {
-               // TODO interact with interactable
                interactable.interact(this);
             }
             

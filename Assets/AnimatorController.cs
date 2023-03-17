@@ -32,7 +32,7 @@ public class AnimatorController : MonoBehaviour
             animator.SetBool("jumping", false);
         
         
-        if(player.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0.01f)
+        if(Mathf.Abs(player.gameObject.GetComponent<Rigidbody2D>().velocity.x) < 0.01f)
             animator.SetBool("walking", false);
     }
 
