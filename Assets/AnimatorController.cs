@@ -19,6 +19,11 @@ public class AnimatorController : MonoBehaviour
 
     void Update()
     {
+        if (player.dead)
+        {
+            animator.SetBool("dead", true);
+            return;
+        }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             Debug.Log("a");
            animator.SetBool("walking", true);

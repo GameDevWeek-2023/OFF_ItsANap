@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
 
     // 2DO: Methode zur Anpassung der Musiklautstärke implementieren
     public void SetMusicVolume(float volume) {
+        Debug.Log("Music Volume" + volume);
         GameAudioMixer.SetFloat("MusicVolume", volume);
     }
 

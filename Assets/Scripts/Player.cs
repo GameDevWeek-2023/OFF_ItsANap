@@ -87,6 +87,13 @@ public class Player : MonoBehaviour
         dead = true;
         // die animation
         // stopp movement    
+        //Time.timeScale = 0; 
+        StartCoroutine(StopTime());
+    }
+
+    public IEnumerator StopTime()
+    {
+        yield return new WaitForSeconds(0.2f);
         Time.timeScale = 0; 
     }
 
