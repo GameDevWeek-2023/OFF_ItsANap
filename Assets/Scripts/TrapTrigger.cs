@@ -93,7 +93,7 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.InstaDeath:
                     //play trap animation
                     //wait till animation ends
-                    Debug.Log("a");
+                    Debug.Log("a" + gameObject.name);
                     StartCoroutine(KillPlayer(1));
                     break;
                 case typeOfTrap.Jump:
