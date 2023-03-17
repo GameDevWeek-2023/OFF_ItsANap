@@ -126,8 +126,21 @@ public class Player : MonoBehaviour
         }
         if (other.tag == "Flower")
         {
-            flowerCollected = true;
-            Destroy(other.gameObject);
+            other.GetComponent<CollectablePlant>().PlayerInRange(this);
+            
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Flower")
+        {
+            Debug.Log("TriggerSTay");
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                flowerCollected = true;
+                Destroy(other.gameObject);
+            }
         }
     }
 
@@ -137,6 +150,10 @@ public class Player : MonoBehaviour
         {
             interactable = null;
             other.GetComponent<Oven>().HoverPlayer(false);
+        }
+        if (other.tag == "Flower")
+        {
+            other.GetComponent<CollectablePlant>().PlayerOutOfRange();
         }
     }
 }
