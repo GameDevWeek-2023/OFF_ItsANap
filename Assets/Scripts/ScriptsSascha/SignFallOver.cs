@@ -6,7 +6,7 @@ using UnityEngine;
 public class SignFallOver : MonoBehaviour
 {
     private bool fallOver;
-    public GameObject bla;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +21,10 @@ public class SignFallOver : MonoBehaviour
         if (transform.localEulerAngles.x < 80 && fallOver)
         {
             transform.Rotate(new Vector3(90, 0, 0) * Time.deltaTime*(transform.localEulerAngles.x+1)/10);
+        }
+        else
+        {
+
         }
     }
 }
