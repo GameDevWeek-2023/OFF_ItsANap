@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
             direction = 1;
             HandleMovement();
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if ((Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.UpArrow)) ||
+            (!Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.UpArrow)) ||
+            (!Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.Space) && Input.GetKeyDown(KeyCode.UpArrow)))
         {
             if (interactable == null)
             {
