@@ -22,7 +22,7 @@ public class LoseManager : MonoBehaviour
     public void Start()
     {
         scoreManager = FindObjectOfType<ScoreManagement>();
-        timeToReset = Time.timeScale;
+        timeToReset = 1;
     }
     /// <summary>
     /// increases Death Counter and shows losing Canvas
@@ -33,6 +33,13 @@ public class LoseManager : MonoBehaviour
         UpdateCounterText();
         losingScreen.enabled = true;
         playerCharacter.GetComponent<Player>().Dead();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && playerCharacter.GetComponent<Player>().dead)
+        {
+            RetryButton();
+        }
     }
     /// <summary>
     /// Reloads this Scene, resetting everything

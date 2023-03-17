@@ -1375,6 +1375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+--- !u!223 &1872245024 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1778616142555901681, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+  m_PrefabInstance: {fileID: 1778616142826647426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &1891516545 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1517052648988850943, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
@@ -1531,17 +1536,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 600333425}
-    - target: {fileID: 1517052648204707834, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RetryButton
-      objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850688, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_Name
       value: LoseScreenCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517052648988850688, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850940, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_Pivot.x
@@ -1631,14 +1628,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 26946970}
-    - target: {fileID: 1517052648988850943, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517052648988850943, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1517052649708778063, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1758,6 +1747,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2005846657364566822, guid: cb41d777347e6b244940052b4b58816e, type: 3}
+      propertyPath: DeathCounter
+      value: 
+      objectReference: {fileID: 1872245024}
+    - target: {fileID: 2005846657364566822, guid: cb41d777347e6b244940052b4b58816e, type: 3}
       propertyPath: submitButton
       value: 
       objectReference: {fileID: 1893344676}
@@ -1870,10 +1863,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6114107951391584435, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 600333425}
     - target: {fileID: 6114107951400652073, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
       propertyPath: m_Pivot.x
       value: 0

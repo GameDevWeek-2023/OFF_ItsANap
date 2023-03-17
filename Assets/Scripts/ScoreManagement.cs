@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ScoreManagement : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class ScoreManagement : MonoBehaviour
     [SerializeField] Text insertNameField;
     [SerializeField] Text highScoreListNames;
     [SerializeField] Text highScoreListNumbers;
-    [SerializeField] public string scoreKey = "Deathscore";
+    [SerializeField] Button submitButton;
+    [SerializeField] InputField inputNameField;
+    public string scoreKey = "Deathscore";
     private string[] highScoreNames = new string[11];
     private int[] highScoreNumbers = new int[11];
     #endregion
@@ -24,7 +27,6 @@ public class ScoreManagement : MonoBehaviour
         loseManager = FindObjectOfType<LoseManager>();
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
         loseManager.UpdateCounterText();
-        SortHighScoreList();
         PrintHighScoreList();
     }
     /// <summary>
@@ -47,6 +49,8 @@ public class ScoreManagement : MonoBehaviour
     }
     public void HideHighScoreButton()
     {
+        submitButton.enabled = true;
+        inputNameField.enabled = true;
         highScoreCanvas.enabled = false;
     }
     /// <summary>
@@ -61,6 +65,7 @@ public class ScoreManagement : MonoBehaviour
             listKey = $"Place {listIndex + 1}";
             highScoreNumbers[listIndex] = PlayerPrefs.GetInt(listKey, 2500);
             highScoreNames[listIndex] = PlayerPrefs.GetString(listKey, "empty");
+            Debug.Log($"{highScoreNumbers[listIndex]} {highScoreNames[listIndex]}");
         }
     }
     /// <summary>
@@ -89,6 +94,7 @@ public class ScoreManagement : MonoBehaviour
                     highScoreNames[secondPos] = tempNameSave;
                 }
             }
+            Debug.Log($"{highScoreNumbers[firstPos]} {highScoreNames[firstPos]}");
         }
         SaveHighScoreList();
     }
@@ -116,8 +122,8 @@ public class ScoreManagement : MonoBehaviour
         for (int listIndex = 0; listIndex < 10; listIndex++)
         {
             listKey = $"Place {listIndex + 1}";
-            highScoreListNames.text += PlayerPrefs.GetString(listKey, "empty") + "\n";
-            highScoreListNumbers.text += PlayerPrefs.GetInt(listKey, 2500) + "\n";
+            highScoreListNames.text += highScoreNames[listIndex] + "\n";
+            highScoreListNumbers.text += highScoreNumbers[listIndex] + "\n";
         }
     }
     #endregion

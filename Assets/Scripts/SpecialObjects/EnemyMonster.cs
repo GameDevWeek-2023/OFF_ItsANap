@@ -11,7 +11,7 @@ public class EnemyMonster : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private float timer = 1f;
     private float currentTimer;
-    private bool followPlayer = false;
+    public bool followPlayer = false;
 
     void Awake()
     {
