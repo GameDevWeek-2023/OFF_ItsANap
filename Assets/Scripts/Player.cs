@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             direction = Vector2.right;
             HandleMovement(Vector2.right);
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (interactable == null)
             {

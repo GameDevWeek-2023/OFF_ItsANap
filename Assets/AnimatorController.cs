@@ -16,12 +16,12 @@ public class AnimatorController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             Debug.Log("a");
            animator.SetBool("walking", true);
            transform.localScale = new Vector3(-0.25f, transform.localScale.y, transform.localScale.z);
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             Debug.Log("d");
             animator.SetBool("walking", true);
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
