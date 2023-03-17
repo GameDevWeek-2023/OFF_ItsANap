@@ -46,19 +46,19 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             // move left
             direction = Vector2.left;
             HandleMovement(Vector2.left);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             // move right
             direction = Vector2.right;
             HandleMovement(Vector2.right);
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
         {
             if (interactable == null)
             {

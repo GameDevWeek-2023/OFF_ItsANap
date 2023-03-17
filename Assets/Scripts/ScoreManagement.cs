@@ -43,6 +43,7 @@ public class ScoreManagement : MonoBehaviour
         highScoreNumbers[10] = loseManager.loseCounter;
         SortHighScoreList();
         SaveHighScoreList();
+        PrintHighScoreList();
     }
     public void HideHighScoreButton()
     {
