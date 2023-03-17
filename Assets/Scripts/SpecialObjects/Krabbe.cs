@@ -13,6 +13,7 @@ public class Krabbe : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private float originPosition;
     private Vector3 destination;
+    private bool windowDown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,16 +34,20 @@ public class Krabbe : MonoBehaviour
     {
         if (window.transform.position.y < originPosition)
         {
-            animator.speed = 1;
-            spriteRenderer.enabled = true;
-            boxCollider.enabled =true;
+            windowDown = true;
+            
             //transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Player") return;
+        if (other.tag != "Player" || windowDown == false) return;
+        
+        
+        animator.speed = 1;
+        spriteRenderer.enabled = true;
+        boxCollider.enabled =true;
         loseManager.UpdateLose();
     }
 }
