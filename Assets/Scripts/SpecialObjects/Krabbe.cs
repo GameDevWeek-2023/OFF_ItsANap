@@ -34,12 +34,22 @@ public class Krabbe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (window.transform.position.y < originPosition)
+        if (window.transform.position.y < originPosition && !windowDown)
         {
-            windowDown = true;
+            Snap();
+            windowDown = true;           
             
             //transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
         }
+    }
+
+    private void Snap()
+    {
+        animator.speed = 1;
+        Debug.Log("l"+ audioSource.clip.name);
+        audioSource.Play();
+        spriteRenderer.enabled = true;
+        boxCollider.enabled =true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -47,10 +57,7 @@ public class Krabbe : MonoBehaviour
         if (other.tag != "Player" || windowDown == false) return;
         
         
-        animator.speed = 1;
-        audioSource.Play();
-        spriteRenderer.enabled = true;
-        boxCollider.enabled =true;
+        
         loseManager.UpdateLose();
     }
 }

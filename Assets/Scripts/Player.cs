@@ -128,6 +128,8 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 
                                                 capsuleCollider.direction, 0, down, 0.1f, groundLayer);
+        if (hit.collider != null) Debug.Log("hit " + hit.collider.name);
+        
         return hit.collider != null;
     }
 
@@ -146,18 +148,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Flower")
-        {
-            Debug.Log("TriggerSTay");
-            if(Input.GetKeyDown(KeyCode.F))
-            {
-                flowerCollected = true;
-                Destroy(other.gameObject);
-            }
-        }
-    }
 
     private void OnTriggerExit2D(Collider2D other)
     {

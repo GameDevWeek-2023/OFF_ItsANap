@@ -24,10 +24,16 @@ public class CollectablePlant : MonoBehaviour
         if(player == null) return;
         if(Input.GetKeyDown(KeyCode.F))
         {
-            player.flowerCollected = true;
-            audioSource.Play();
-            Destroy(gameObject);
+            StartCoroutine(collectFlower());
         }
+    }
+
+    IEnumerator collectFlower()
+    {
+        player.flowerCollected = true;
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
+        Destroy(gameObject);
     }
 
     public void PlayerInRange(Player p)

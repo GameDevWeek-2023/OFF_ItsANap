@@ -17,6 +17,7 @@ public class Oven : Interactable
     public override void interact(Player player)
     {
         player.Teleport(destination);
+        Debug.Log(audioSource.clip.name);
         audioSource.Play();
     }
 
