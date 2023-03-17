@@ -8,8 +8,13 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] InputField insertNameField;
     [SerializeField] Button submitButton;
+    [SerializeField] Canvas DeathCounter;
     [SerializeField] Canvas highScoreCanvas;
     [SerializeField] Canvas optionsMenu;
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
     public void ShowHighScoreButton()
     {
         highScoreCanvas.enabled = true;
@@ -23,6 +28,8 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGameButton()
     {
+        Time.timeScale = 1;
+        DeathCounter.enabled = true;
         SceneManager.LoadScene("MainLevel");
     }
     public void OptionsButton()
