@@ -42,7 +42,11 @@ public class EnemyMonster : MonoBehaviour
             }
             
         }
-        if (playerInRange && player.velocity.magnitude < eps) 
+        if (playerInRange && 
+            !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow) &&
+            !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.RightArrow) &&
+            player.GetComponent<Player>().onGround()
+            ) 
         {
             if (currentTimer <= 0)
             {
