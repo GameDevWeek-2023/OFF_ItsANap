@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         targetPositon = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
-        if (target.direction.x > 0)
+        if (target.direction > 0)
         {
             targetPositon = new Vector3(targetPositon.x + offset, targetPositon.y, targetPositon.z);
         } 

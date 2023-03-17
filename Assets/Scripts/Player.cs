@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public float maxSpeed = 5f;
     public Interactable interactable = null;
     public bool dead = false;
-    public Vector2 direction;
+    public int direction;
 
     public bool flowerCollected = false;
 
@@ -49,14 +49,14 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             // move left
-            direction = Vector2.left;
-            HandleMovement(Vector2.left);
+            direction = -1;
+            HandleMovement();
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             // move right
-            direction = Vector2.right;
-            HandleMovement(Vector2.right);
+            direction = 1;
+            HandleMovement();
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -90,17 +90,21 @@ public class Player : MonoBehaviour
         Time.timeScale = 0; 
     }
 
-    public void Teleport(Vector2 destionation)
+    public void Teleport(Vector2 destination)
     {
-        transform.position = destionation;
+        transform.position = destination;
     }
 
-    private void HandleMovement(Vector2 direction)
+    private void HandleMovement()
     {
+        /*
         if (Mathf.Abs(rb.velocity.x) < maxSpeed)
         {
             rb.AddRelativeForce(direction * moveForce);
         }
+        */
+        float d = direction * maxSpeed * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x + d, transform.position.y, transform.position.z);
     }
 
     private void HandleJump()
