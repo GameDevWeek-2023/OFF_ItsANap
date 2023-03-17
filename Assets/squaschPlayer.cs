@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class squaschPlayer : MonoBehaviour
 {
-    private CameraController cameraController = new CameraController();
+    private CameraController cameraController;
     private void Start()
     {
         cameraController = FindObjectOfType<CameraController>();
