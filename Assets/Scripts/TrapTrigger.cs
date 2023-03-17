@@ -13,7 +13,8 @@ public class TrapTrigger : MonoBehaviour
         InstaDeath,
         Jump,
         RotateTrap,
-        Visable
+        Visable,
+        PlayAnimation
     }
     enum direction
     {
