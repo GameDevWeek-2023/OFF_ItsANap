@@ -5559,7 +5559,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 100
+  m_RootOrder: 101
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589802091
 GameObject:
@@ -9002,6 +9002,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 73.380005
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 79.34497
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -106.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635433, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1844624254}
+    - target: {fileID: 642635433, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetScore
+      objectReference: {fileID: 0}
     - target: {fileID: 1778616142555901681, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_Camera
       value: 
@@ -10203,6 +10239,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1240514177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1240514179}
+  - component: {fileID: 1240514178}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1240514178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240514177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c56e3dd2fbb6e4297bf3ebed7a05fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScoreCanvas: {fileID: 0}
+  insertNameField: {fileID: 0}
+  highScoreListNames: {fileID: 0}
+  highScoreListNumbers: {fileID: 0}
+  scoreKey: Deathscore
+--- !u!4 &1240514179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240514177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 100
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1269210222
 PrefabInstance:
   m_ObjectHideFlags: 0
