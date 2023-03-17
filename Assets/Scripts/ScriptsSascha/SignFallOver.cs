@@ -19,7 +19,7 @@ public class SignFallOver : MonoBehaviour
     {
         if (transform.localEulerAngles.x < 80 && fallOver)
         {
-            transform.Rotate(new Vector3(90, 0, 0) * Time.deltaTime*(transform.localEulerAngles.x+1)/5);
+            transform.Rotate(new Vector3(90, 0, 0) * Time.deltaTime*(transform.localEulerAngles.x+1)/1);
         }
         else
         {

@@ -15,7 +15,7 @@ public class JiggleStone : MonoBehaviour
     {
         if (GetComponent<BoxCollider2D>() == null)
         {
-            gameObject.AddComponent<BoxCollider2D>();
+            //gameObject.AddComponent<BoxCollider2D>();
         }
     }
     
@@ -46,9 +46,9 @@ public class JiggleStone : MonoBehaviour
         transform.localScale = new Vector3(r * xScale, r * yScale, transform.localScale.z);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag != "Player") return;
-        jiggle = true;
+            jiggle = true;
     }
 }
