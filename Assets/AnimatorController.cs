@@ -9,6 +9,9 @@ public class AnimatorController : MonoBehaviour
     public Player player;
     public Animator animator;
 
+    private bool notLeft;
+    private bool notRight;
+
     private void Start()
     {
         player.jump += JumpAnim;
@@ -20,20 +23,32 @@ public class AnimatorController : MonoBehaviour
             Debug.Log("a");
            animator.SetBool("walking", true);
            transform.localScale = new Vector3(-0.25f, transform.localScale.y, transform.localScale.z);
+           notLeft = false;
+        }
+        else
+        {
+            notLeft = true;
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             Debug.Log("d");
             animator.SetBool("walking", true);
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
+            notRight = false;
+        }
+        else
+        {
+            notRight = true;
+        }
+
+        if (notLeft && notRight)
+        {
+            animator.SetBool("walking", false);
         }
 
 
         if(player.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.01f && player.onGround())
             animator.SetBool("jumping", false);
-        
-        
-        if(Mathf.Abs(player.gameObject.GetComponent<Rigidbody2D>().velocity.x) < 0.01f)
-            animator.SetBool("walking", false);
+
     }
 
     void JumpAnim()

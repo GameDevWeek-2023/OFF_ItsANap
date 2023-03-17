@@ -249,10 +249,10 @@ MonoBehaviour:
     m_Bits: 64
   moveForce: 100
   jumpForce: 50
-  maxSpeed: 10
+  maxSpeed: 15
   interactable: {fileID: 0}
   dead: 0
-  direction: {x: 0, y: 0}
+  direction: 0
   flowerCollected: 0
   lastCheckpoint: {x: 0, y: 0}
 --- !u!70 &7264829148437872827
