@@ -40,6 +40,8 @@ public class TrapTrigger : MonoBehaviour
     [SerializeField] bool dontJump = false;
     [SerializeField] bool rotationTrigger = false;
     [SerializeField] Animator animator;
+    public float killduration;
+    public float moveTrapSpeed = 20;
     private Player player;
     private LoseManager loseManager;
     #endregion
@@ -93,8 +95,8 @@ public class TrapTrigger : MonoBehaviour
                 case typeOfTrap.InstaDeath:
                     //play trap animation
                     //wait till animation ends
-                    Debug.Log("a" + gameObject.name);
-                    StartCoroutine(KillPlayer(1));
+                    Debug.Log("a");
+                    StartCoroutine(KillPlayer(killduration));
                     break;
                 case typeOfTrap.Jump:
                     //dontJump = true;
@@ -121,10 +123,10 @@ public class TrapTrigger : MonoBehaviour
     /// Kills the player after a delay
     /// </summary>
     /// <param name="delay"></param>
-    IEnumerator KillPlayer(float delay)
+    public IEnumerator KillPlayer(float delay)
     {
+        player.dead = true;
         yield return new WaitForSeconds(delay);
-        Debug.Log("a");
         loseManager.UpdateLose();
     }
     #region TypeOfTraps
@@ -147,22 +149,22 @@ public class TrapTrigger : MonoBehaviour
             case direction.up:
                 Debug.Log("flieg nach oben");
                 if (trapToTrigger.transform.position.y < travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.up * 20 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.up * moveTrapSpeed * Time.deltaTime);
                 break;
             case direction.right:
                 Debug.Log("flieg nach rechts");
                 if (trapToTrigger.transform.position.x < travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.right * 20 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.right * moveTrapSpeed * Time.deltaTime);
                 break;
             case direction.down:
                 Debug.Log("flieg nach unten");
                 if (trapToTrigger.transform.position.y > -travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.down * 20 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.down * moveTrapSpeed * Time.deltaTime);
                 break;
             case direction.left:
                 Debug.Log("flieg nach links");
                 if (trapToTrigger.transform.position.x > -travelDistance)
-                    trapToTrigger.transform.Translate(Vector3.left * 20 * Time.deltaTime);
+                    trapToTrigger.transform.Translate(Vector3.left * moveTrapSpeed * Time.deltaTime);
                 break;
             default:
                 break;
