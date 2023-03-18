@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dead)
+        if (dead || !(GameState.state==stateOfGame.running))
         {
             return;
         }

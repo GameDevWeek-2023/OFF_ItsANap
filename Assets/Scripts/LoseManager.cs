@@ -69,9 +69,9 @@ public class LoseManager : MonoBehaviour
     /// </summary>
     public void ResetScore()
     {
-        Debug.Log("reste");
         PlayerPrefs.SetInt(scoreManager.scoreKey, 0);
         loseCounter = 0;
+        GameState.state=stateOfGame.running;
         UpdateCounterText();
         RetryButton();
     }

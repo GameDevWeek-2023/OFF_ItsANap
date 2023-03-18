@@ -62,6 +62,8 @@ public class ScoreManagement : MonoBehaviour
         }
     }
     private void OnDisable() {
+        Debug.Log("scorekey" + scoreKey);
+        Debug.Log("loseCounter"+ loseManager.loseCounter);
         PlayerPrefs.SetInt(scoreKey, loseManager.loseCounter);
     }
     #region Buttons
