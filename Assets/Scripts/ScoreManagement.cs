@@ -54,8 +54,10 @@ public class ScoreManagement : MonoBehaviour
     #region Buttons
     public void SubmitButton()
     {
-        highScoreNames[10] = inputNameField.textComponent.text;
-        highScoreNumbers[10] = loseManager.loseCounter;
+        highScoreNames.Remove(10);
+        highScoreNumbers.Remove(10);
+        highScoreNames.Add(10, inputNameField.textComponent.text);
+        highScoreNumbers.Add(10, loseManager.loseCounter);
         SortDictionaries();
         PrintHighScoreList();
         inputNameField.enabled = false;
@@ -118,17 +120,21 @@ public class ScoreManagement : MonoBehaviour
         // splits every line in fileDataArray into a name and a number and saves them in their dictionaries
         foreach (string fileData in fileDataArray)
         {
-            string[] splitArray = fileData.Split(fileData, char.Parse("_"));
+            string[] splitArray = fileData.Split('_');
             highScoreNames.Add(dictIndex, splitArray[0]);
+            #region DebugLog
             Debug.Log($"{dictIndex} {splitArray[0]} {splitArray[1]}");
             Debug.Log("-----------------");
             Debug.Log($"{dictIndex} " + highScoreNames.GetValueOrDefault(dictIndex));
+            #endregion
             int.TryParse(splitArray[1], out numberParser);
             highScoreNumbers.Add(dictIndex, numberParser);
+            #region DebugLog
             Debug.Log($"{dictIndex} {highScoreNumbers.GetValueOrDefault(dictIndex)}");
             Debug.Log("-----------------");
             Debug.Log($"{dictIndex} {fileData}");
             Debug.Log("==================");
+            #endregion
             dictIndex++;
         }
     }
@@ -140,7 +146,7 @@ public class ScoreManagement : MonoBehaviour
         fileContent = "";
         for(int index = 0; index < 11; index++)
         {
-            fileContent += highScoreNames[index] + "_" + highScoreNumbers + "\n";
+            fileContent += highScoreNames[index] + "_" + Convert.ToString(highScoreNumbers.GetValueOrDefault(index)) + "\n";
         }
     }
     private void PrintHighScoreList()
@@ -151,12 +157,14 @@ public class ScoreManagement : MonoBehaviour
         string stringOutput;
         for (int dictIndex = 0; dictIndex < 10; dictIndex++)
         {
-            highScoreNumbers.TryGetValue(dictIndex, out numberOutput);
-            highScoreNames.TryGetValue(dictIndex, out stringOutput);
+            //highScoreNumbers.TryGetValue(dictIndex, out numberOutput);
+            //highScoreNames.TryGetValue(dictIndex, out stringOutput);
+            numberOutput = highScoreNumbers.GetValueOrDefault(dictIndex);
+            stringOutput = highScoreNames.GetValueOrDefault(dictIndex);
             Debug.Log(Convert.ToString(numberOutput) + " " + Convert.ToString(dictIndex));
             Debug.Log(stringOutput + " " + Convert.ToString(dictIndex));
-            highScoreTextNumbers.text = Convert.ToString(numberOutput) + "\n";
-            highScoreTextNames.text = stringOutput + "\n";
+            highScoreTextNumbers.text += Convert.ToString(numberOutput) + "\n";
+            highScoreTextNames.text += stringOutput + "\n";
         }
     }
     #endregion

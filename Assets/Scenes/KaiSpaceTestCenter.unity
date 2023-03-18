@@ -1831,6 +1831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseScreenCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1517052648988850688, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850940, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2022,7 +2026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114107951400652077, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6114107951400652078, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
       propertyPath: m_Camera
