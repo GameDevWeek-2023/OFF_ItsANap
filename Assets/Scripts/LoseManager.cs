@@ -40,6 +40,10 @@ public class LoseManager : MonoBehaviour
         {
             RetryButton();
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && GameState.state == stateOfGame.running)
+        {
+            UpdateLose();
+        }
     }
     /// <summary>
     /// Reloads this Scene, resetting everything

@@ -8003,6 +8003,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RetryButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1517052648204707837, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850688, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_Name
       value: LoseScreenCanvas
@@ -8077,11 +8081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850940, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -227.01001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850940, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 7.699997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1517052648988850940, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8106,6 +8110,18 @@ PrefabInstance:
     - target: {fileID: 1517052648988850943, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517052649708778062, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517052649708778062, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517052649708778062, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 1517052649708778063, guid: 44aafd54321cd034586d7d6df9d8b405, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -24615,7 +24631,19 @@ PrefabInstance:
     - target: {fileID: 6114107951156888531, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7c23c46412592434da4d5982a041cb4e, type: 3}
+      objectReference: {fileID: 21300000, guid: f1074a0b8d48721438ea66b561f4237c, type: 3}
+    - target: {fileID: 6114107951156888531, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114107951156888531, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114107951156888531, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6114107951400652073, guid: a4b8dd01e37c3a34094e0457970ee086, type: 3}
       propertyPath: m_Pivot.x
       value: 0
