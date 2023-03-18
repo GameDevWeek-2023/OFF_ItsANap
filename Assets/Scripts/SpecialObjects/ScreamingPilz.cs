@@ -32,7 +32,16 @@ public class ScreamingPilz : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null || happy) return;
+        if (player == null) return;
+        if(happy)
+        {
+            hotdog.transform.position = Vector3.MoveTowards(hotdog.transform.position, transform.position, speed * Time.deltaTime);
+            if (hotdog.transform.position == transform.position)
+            {
+                hotdog.SetActive(false);
+            }
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.F) && player.flowerCollected)
         {
             screaming.SetActive(false);
@@ -47,15 +56,7 @@ public class ScreamingPilz : MonoBehaviour
             hotdog.SetActive(true);
             hotdog.transform.position = player.transform.position;
         }
-        if(happy)
-        {
-            Debug.Log("happy");
-            hotdog.transform.position = Vector3.MoveTowards(hotdog.transform.position, transform.position, speed * Time.deltaTime);
-            if (hotdog.transform.position == transform.position)
-            {
-                hotdog.SetActive(false);
-            }
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
