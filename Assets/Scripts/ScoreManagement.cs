@@ -13,6 +13,7 @@ public class ScoreManagement : MonoBehaviour
     [SerializeField] Text highScoreTextNumbers;
     [SerializeField] Button submitButton;
     [SerializeField] InputField inputNameField;
+    [SerializeField] Canvas mainMenuCanvas;
     public string scoreKey = "Deathscore";
     private LoseManager loseManager;
     #region FilePath
@@ -31,6 +32,14 @@ public class ScoreManagement : MonoBehaviour
         loseManager = FindObjectOfType<LoseManager>();
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
         loseManager.UpdateCounterText();
+        if (GameState.state == stateOfGame.win)
+        {
+            highScoreCanvas.enabled = true;
+        }
+        else
+        {
+            highScoreCanvas.enabled = false;
+        }
         filePath = Application.dataPath + "/Highscores.txt";
         //Checks if the highscore file exists and creates one if it doesn't
         if (!File.Exists(filePath))
@@ -66,8 +75,10 @@ public class ScoreManagement : MonoBehaviour
     public void HideHighScoreButton()
     {
         OverrideFile();
+        GameState.state = stateOfGame.newStart;
         inputNameField.enabled = true;
         submitButton.enabled = true;
+        mainMenuCanvas.enabled = true;
         highScoreCanvas.enabled = false;
     }
     #endregion

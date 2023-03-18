@@ -36,7 +36,7 @@ public class LoseManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && (GameState.state==stateOfGame.running))
         {
             RetryButton();
         }
@@ -53,6 +53,7 @@ public class LoseManager : MonoBehaviour
     public void MenuButton(string sceneToLoad)
     {
         Time.timeScale = timeToReset;
+        GameState.state = stateOfGame.newStart;
         SceneManager.LoadScene(sceneToLoad);
     }
     /// <summary>

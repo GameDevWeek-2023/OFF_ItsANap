@@ -8,6 +8,8 @@ public class Goal : Interactable
 {
     public override void interact(Player player)
     {
+        GameState.state = stateOfGame.win;
         SceneManager.LoadScene("EndScene");
+        
     }
 }

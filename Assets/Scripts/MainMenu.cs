@@ -11,11 +11,19 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Canvas DeathCounter;
     [SerializeField] Canvas highScoreCanvas;
     [SerializeField] Canvas optionsMenu;
+    [SerializeField] Canvas mainMenu;
     private LoseManager loseManager;
     private void Start()
     {
         loseManager = FindObjectOfType<LoseManager>();
-        Time.timeScale = 0;
+        if (GameState.state == stateOfGame.newStart)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            mainMenu.enabled = false;
+        }
     }
     public void ShowHighScoreButton()
     {
@@ -30,6 +38,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGameButton()
     {
+        GameState.state = stateOfGame.running;
         Time.timeScale = 1;
         DeathCounter.enabled = true;
         loseManager.ResetScore();

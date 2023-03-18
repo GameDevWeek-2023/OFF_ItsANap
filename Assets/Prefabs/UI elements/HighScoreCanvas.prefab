@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -750,11 +750,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreCanvas: {fileID: 6114107951400652078}
-  insertNameField: {fileID: 6114107950951894853}
-  highScoreListNames: {fileID: 6114107951494450824}
-  highScoreListNumbers: {fileID: 6114107952440876082}
+  highScoreTextNames: {fileID: 0}
+  highScoreTextNumbers: {fileID: 0}
   submitButton: {fileID: 6114107952136625209}
   inputNameField: {fileID: 6114107951150257865}
+  mainMenuCanvas: {fileID: 0}
   scoreKey: Deathscore
 --- !u!1 &6114107951630122359
 GameObject:
