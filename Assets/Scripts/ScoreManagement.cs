@@ -37,11 +37,13 @@ public class ScoreManagement : MonoBehaviour
         {
             File.Create(filePath);
             fileContent = "";
-            for(int index = 0; index < 10; index++)
+            for(int index = 0; index < 11; index++)
             {
                 fileContent += "empty_2500" + "\n";
             }
             OverrideFile();
+            FileDataToDictionary();
+            PrintHighScoreList();
         }
         else
         {
@@ -118,9 +120,11 @@ public class ScoreManagement : MonoBehaviour
         {
             string[] splitArray = fileData.Split(fileData, char.Parse("_"));
             highScoreNames.Add(dictIndex, splitArray[0]);
+            Debug.Log($"{dictIndex} " + highScoreNames.GetValueOrDefault(dictIndex));
             int.TryParse(splitArray[1], out numberParser);
             highScoreNumbers.Add(dictIndex, numberParser);
-            Debug.Log($"{fileData} {dictIndex}");
+            Debug.Log($"{dictIndex} {highScoreNumbers.GetValueOrDefault(dictIndex)}");
+            Debug.Log($"{dictIndex} {fileData}");
             dictIndex++;
         }
     }
