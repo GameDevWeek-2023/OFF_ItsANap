@@ -120,11 +120,15 @@ public class ScoreManagement : MonoBehaviour
         {
             string[] splitArray = fileData.Split(fileData, char.Parse("_"));
             highScoreNames.Add(dictIndex, splitArray[0]);
+            Debug.Log($"{dictIndex} {splitArray[0]} {splitArray[1]}");
+            Debug.Log("-----------------");
             Debug.Log($"{dictIndex} " + highScoreNames.GetValueOrDefault(dictIndex));
             int.TryParse(splitArray[1], out numberParser);
             highScoreNumbers.Add(dictIndex, numberParser);
             Debug.Log($"{dictIndex} {highScoreNumbers.GetValueOrDefault(dictIndex)}");
+            Debug.Log("-----------------");
             Debug.Log($"{dictIndex} {fileData}");
+            Debug.Log("==================");
             dictIndex++;
         }
     }
