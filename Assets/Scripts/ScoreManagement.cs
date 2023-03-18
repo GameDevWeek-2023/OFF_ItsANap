@@ -17,7 +17,7 @@ public class ScoreManagement : MonoBehaviour
     private LoseManager loseManager;
     #region FilePath
     private string filePath;
-    private string fileContent = "";
+    private string fileContent;
     private Dictionary<int, string> highScoreNames = new Dictionary<int, string>(11);
     private Dictionary<int, int> highScoreNumbers = new Dictionary<int, int>(11);
     #endregion
@@ -36,6 +36,17 @@ public class ScoreManagement : MonoBehaviour
         if (!File.Exists(filePath))
         {
             File.Create(filePath);
+            fileContent = "";
+            for(int index = 0; index < 10; index++)
+            {
+                fileContent += "empty_2500" + "\n";
+            }
+            OverrideFile();
+        }
+        else
+        {
+            FileDataToDictionary();
+            PrintHighScoreList();
         }
     }
     #region Buttons
@@ -44,11 +55,13 @@ public class ScoreManagement : MonoBehaviour
         highScoreNames[10] = inputNameField.textComponent.text;
         highScoreNumbers[10] = loseManager.loseCounter;
         SortDictionaries();
+        PrintHighScoreList();
         inputNameField.enabled = false;
         submitButton.enabled = false;
     }
     public void HideHighScoreButton()
     {
+        OverrideFile();
         inputNameField.enabled = true;
         submitButton.enabled = true;
         highScoreCanvas.enabled = false;
@@ -59,6 +72,7 @@ public class ScoreManagement : MonoBehaviour
     /// </summary>
     private void OverrideFile()
     {
+        DictionariesToString();
         File.WriteAllText(filePath, fileContent);
     }
 
@@ -89,6 +103,28 @@ public class ScoreManagement : MonoBehaviour
         }
     }
     /// <summary>
+    /// writes the contents of a file into their respective dictionaries
+    /// </summary>
+    private void FileDataToDictionary()
+    {
+        string[] fileDataArray = File.ReadAllLines(filePath);
+        int dictIndex = 0;
+        //used as a work-around because you can't write into highScoreNumbers with try parse for some reason
+        int numberParser;
+        highScoreNames.Clear();
+        highScoreNumbers.Clear();
+        // splits every line in fileDataArray into a name and a number and saves them in their dictionaries
+        foreach (string fileData in fileDataArray)
+        {
+            string[] splitArray = fileData.Split(fileData, char.Parse("_"));
+            highScoreNames.Add(dictIndex, splitArray[0]);
+            int.TryParse(splitArray[1], out numberParser);
+            highScoreNumbers.Add(dictIndex, numberParser);
+            Debug.Log($"{fileData} {dictIndex}");
+            dictIndex++;
+        }
+    }
+    /// <summary>
     /// overrides the filecontent string with values from the dictionaries
     /// </summary>
     private void DictionariesToString()
@@ -96,7 +132,23 @@ public class ScoreManagement : MonoBehaviour
         fileContent = "";
         for(int index = 0; index < 11; index++)
         {
-            fileContent += highScoreNames[index] + ";;" + highScoreNumbers + ";;";
+            fileContent += highScoreNames[index] + "_" + highScoreNumbers + "\n";
+        }
+    }
+    private void PrintHighScoreList()
+    {
+        highScoreTextNumbers.text = "";
+        highScoreTextNames.text = "";
+        int numberOutput;
+        string stringOutput;
+        for (int dictIndex = 0; dictIndex < 10; dictIndex++)
+        {
+            highScoreNumbers.TryGetValue(dictIndex, out numberOutput);
+            highScoreNames.TryGetValue(dictIndex, out stringOutput);
+            Debug.Log(Convert.ToString(numberOutput) + " " + Convert.ToString(dictIndex));
+            Debug.Log(stringOutput + " " + Convert.ToString(dictIndex));
+            highScoreTextNumbers.text = Convert.ToString(numberOutput) + "\n";
+            highScoreTextNames.text = stringOutput + "\n";
         }
     }
     #endregion
