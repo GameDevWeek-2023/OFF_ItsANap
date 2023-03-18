@@ -91,8 +91,8 @@ public class Player : MonoBehaviour
     public void Dead()
     {
         dead = true;
-        dieSound.Play();
-        // die animation
+        //dieSound.Play();
+        // die animation in Animation Controller
         // stopp movement    
         //Time.timeScale = 0; 
         StartCoroutine(StopTime());

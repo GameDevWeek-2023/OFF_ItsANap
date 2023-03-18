@@ -93,6 +93,7 @@ public class TrapTrigger : MonoBehaviour
             if (audioSource != null)
             {
                 audioSource.enabled = true;
+                Debug.Log("Play Audio " + audioSource.clip.name);
             }
             switch (trapType)
             {
