@@ -11,8 +11,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Canvas DeathCounter;
     [SerializeField] Canvas highScoreCanvas;
     [SerializeField] Canvas optionsMenu;
+    private LoseManager loseManager;
     private void Start()
     {
+        loseManager = FindObjectOfType<LoseManager>();
         Time.timeScale = 0;
     }
     public void ShowHighScoreButton()
@@ -30,6 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         DeathCounter.enabled = true;
+        loseManager.ResetScore();
         submitButton.enabled = true;
         insertNameField.enabled = true;
         SceneManager.LoadScene("MainLevel");
