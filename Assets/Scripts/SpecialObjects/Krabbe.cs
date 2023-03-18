@@ -6,14 +6,12 @@ public class Krabbe : MonoBehaviour
 {
     [SerializeField] private GameObject window;
     [SerializeField] private float destinationY;
-    [SerializeField] private float speed = 10f;
     [SerializeField] private Animator animator;
     [SerializeField] private LoseManager loseManager;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private AudioSource audioSource;
     private float originPosition;
-    private Vector3 destination;
     private bool windowDown = false;
 
     // Start is called before the first frame update
@@ -28,7 +26,6 @@ public class Krabbe : MonoBehaviour
         spriteRenderer.enabled = false;
 
         originPosition = window.transform.position.y;
-        destination = new Vector3(transform.position.x, destinationY, transform.position.z);
     }
 
     // Update is called once per frame
@@ -46,7 +43,6 @@ public class Krabbe : MonoBehaviour
     private void Snap()
     {
         animator.speed = 1;
-        Debug.Log("l"+ audioSource.clip.name);
         audioSource.Play();
         spriteRenderer.enabled = true;
         boxCollider.enabled =true;
@@ -55,8 +51,6 @@ public class Krabbe : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag != "Player" || windowDown == false) return;
-        
-        
         
         loseManager.UpdateLose();
     }
