@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
         if (GameState.state == stateOfGame.newStart)
         {
             Time.timeScale = 0;
+            DeathCounter.enabled = false;
         }
         else
         {
@@ -39,7 +40,9 @@ public class MainMenu : MonoBehaviour
     {
         GameState.state = stateOfGame.running;
         Time.timeScale = 1;
-        DeathCounter.enabled = true;
+        if(GameState.state==stateOfGame.running){
+            DeathCounter.enabled = true;
+        }
         loseManager.ResetScore();
         submitButton.enabled = true;
         insertNameField.enabled = true;

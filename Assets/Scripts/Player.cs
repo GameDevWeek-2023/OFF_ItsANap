@@ -149,7 +149,11 @@ public class Player : MonoBehaviour
         if (other.tag == "Interactable")
         {
             interactable = other.GetComponent<Interactable>();
-            other.GetComponent<Oven>().HoverPlayer(true);
+            if (other.GetComponent<Oven>() != null)
+            {
+                other.GetComponent<Oven>().HoverPlayer(true);
+            }
+            
         }
         if (other.tag == "Flower")
         {

@@ -19920,6 +19920,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1836686296}
   - component: {fileID: 1836686295}
+  - component: {fileID: 1836686298}
+  - component: {fileID: 1836686297}
   m_Layer: 0
   m_Name: IMG_4842
   m_TagString: Untagged
@@ -19994,6 +19996,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 131
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836686297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836686294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e45c1ce48925cc4f8be0e3789c99c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1836686298
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836686294}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.28668845, y: 1.5409987}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 7.68}
+    newSize: {x: 10.24, y: 7.68}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.6424663, y: 3.4512124}
+  m_EdgeRadius: 0
 --- !u!1 &1843164283
 GameObject:
   m_ObjectHideFlags: 0
@@ -24281,11 +24321,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -24293,12 +24333,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 642635432, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110.61
+      value: -119.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 642635433, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1844624254}
+    - target: {fileID: 642635433, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetScore
       objectReference: {fileID: 0}
     - target: {fileID: 1778616142555901681, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1498274756}
+    - target: {fileID: 1778616142555901681, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1778616142555901682, guid: b17ac4e45400f2645ba220e33c9123d3, type: 3}
       propertyPath: m_Name
       value: DeathCounterCanvas

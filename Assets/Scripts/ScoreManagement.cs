@@ -61,6 +61,9 @@ public class ScoreManagement : MonoBehaviour
             PrintHighScoreList();
         }
     }
+    private void OnDisable() {
+        PlayerPrefs.SetInt(scoreKey, loseManager.loseCounter);
+    }
     #region Buttons
     public void SubmitButton()
     {
