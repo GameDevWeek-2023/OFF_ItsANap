@@ -36,7 +36,7 @@ public class LoseManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && playerCharacter.GetComponent<Player>().dead)
+        if (Input.GetKeyDown(KeyCode.R))
         {
             RetryButton();
         }
