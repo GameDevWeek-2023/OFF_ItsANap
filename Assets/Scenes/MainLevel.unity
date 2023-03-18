@@ -311,7 +311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27230497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0438, y: 0.04, z: 0}
+  m_LocalPosition: {x: -0.067, y: 0, z: 0}
   m_LocalScale: {x: 0.18255092, y: 0.390464, z: 0.30256906}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2357,7 +2357,7 @@ PrefabInstance:
       objectReference: {fileID: 1300310162}
     - target: {fileID: 1503796237679808301, guid: cdd725a0fc2cacb4392c8d6abc1bc503, type: 3}
       propertyPath: travelDistance
-      value: -15
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1503796237679808301, guid: cdd725a0fc2cacb4392c8d6abc1bc503, type: 3}
       propertyPath: triggerDirection
@@ -2535,7 +2535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267272971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.039, y: 0.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1825519, y: 0.39046443, z: 0.30256906}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4065,19 +4065,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 423842608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af9e947da4239c478425317e1144d92, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e45c1ce48925cc4f8be0e3789c99c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapType: 2
-  triggerDirection: 0
-  travelDistance: 0
-  trapToTrigger: {fileID: 0}
-  moveGround: 0
-  dontJump: 0
-  rotationTrigger: 0
-  animator: {fileID: 0}
-  killduration: 0.5
-  moveTrapSpeed: 20
 --- !u!1 &427702989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1539061151193240776, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
@@ -8015,11 +8005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264829148437872830, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.2
+      value: 211.3
       objectReference: {fileID: 0}
     - target: {fileID: 7264829148437872830, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.8
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: 7264829148437872830, guid: 04edc634d124d54439c1f919bc154e85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11147,7 +11137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.22
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11916,9 +11906,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreCanvas: {fileID: 0}
-  insertNameField: {fileID: 0}
-  highScoreListNames: {fileID: 0}
-  highScoreListNumbers: {fileID: 0}
+  highScoreTextNames: {fileID: 0}
+  highScoreTextNumbers: {fileID: 0}
   submitButton: {fileID: 0}
   inputNameField: {fileID: 0}
   scoreKey: Deathscore
@@ -12507,6 +12496,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0406502
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.020325124
+      objectReference: {fileID: 0}
     - target: {fileID: 1539061151193240776, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_Name
       value: Platform5 (14)
@@ -12529,7 +12526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 243.25998
+      value: 241.89
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13871,6 +13868,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0446641
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.022332162
+      objectReference: {fileID: 0}
     - target: {fileID: 1539061151193240776, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_Name
       value: Platform5 (13)
@@ -13893,7 +13898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 232.77998
+      value: 229.82
       objectReference: {fileID: 0}
     - target: {fileID: 4760266150022941834, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16291,7 +16296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435953278764899187, guid: e7e1ddfd2786abe4fb3acf838ceb52d8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e1ddfd2786abe4fb3acf838ceb52d8, type: 3}
@@ -20832,6 +20837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539061151193240776, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
       propertyPath: m_Name
       value: "Unsichtbarer Block mit Spikes. Wenn man drunter durchl\xE4uft erscheint
@@ -20910,7 +20919,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1125299116807300124, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
+    - {fileID: 8494952872384617416, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e5ae0b20269676c418e3531f17cb30d3, type: 3}
 --- !u!1001 &2078113279
 PrefabInstance:
