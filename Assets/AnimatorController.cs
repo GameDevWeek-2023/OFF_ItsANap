@@ -8,6 +8,7 @@ public class AnimatorController : MonoBehaviour
 {
     public Player player;
     public Animator animator;
+    [SerializeField] private BoxCollider2D boxCollider;
 
     private bool notLeft;
     private bool notRight;
@@ -28,6 +29,7 @@ public class AnimatorController : MonoBehaviour
             Debug.Log("a");
            animator.SetBool("walking", true);
            transform.localScale = new Vector3(-0.25f, transform.localScale.y, transform.localScale.z);
+           boxCollider.offset = new Vector2(-0.3f, boxCollider.offset.y);
            notLeft = false;
         }
         else
@@ -38,6 +40,7 @@ public class AnimatorController : MonoBehaviour
             Debug.Log("d");
             animator.SetBool("walking", true);
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
+            boxCollider.offset = new Vector2(-0.1f, boxCollider.offset.y);
             notRight = false;
         }
         else

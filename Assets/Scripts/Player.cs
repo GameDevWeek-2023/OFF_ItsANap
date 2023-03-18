@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private CapsuleCollider2D capsuleCollider;
+    //[SerializeField] private CapsuleCollider2D capsuleCollider;
+    private BoxCollider2D boxCollider;
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioSource dieSound;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         jump += HandleJump;
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -121,15 +123,21 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
-        if (!onGround()) return;
-        rb.AddRelativeForce(up * jumpForce, ForceMode2D.Impulse);
-        jumpSound.Play();
+        //player.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.01f
+        //if (!onGround() || ) return;
+        if(onGround() && rb.velocity.y < 0.01f)
+        {
+            rb.AddRelativeForce(up * jumpForce, ForceMode2D.Impulse);
+            jumpSound.Play();
+        }
+        
     }
 
     public bool onGround()
     {
-        RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 
-                                                capsuleCollider.direction, 0, down, 0.1f, groundLayer);
+        RaycastHit2D hit = Physics2D.CapsuleCast(boxCollider.bounds.center, boxCollider.bounds.size, 
+                                                CapsuleDirection2D.Vertical, 0, down, 0.1f, groundLayer);
+        //RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider)
         if (hit.collider != null) Debug.Log("hit " + hit.collider.name);
         
         return hit.collider != null;

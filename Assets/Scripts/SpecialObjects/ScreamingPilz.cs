@@ -14,6 +14,7 @@ public class ScreamingPilz : MonoBehaviour
     [SerializeField] AudioClip screamLoop;
     public float speed = 10f;
     private bool happy = false;
+    private bool audioStarted = false;
     private Player player; 
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class ScreamingPilz : MonoBehaviour
             screaming.SetActive(false);
             eyesClosed.SetActive(true);
 
-            audioSource.Stop();
+            audioSource.enabled = false;
             happy = true;
 
             flower.SetActive(true);
@@ -66,9 +67,10 @@ public class ScreamingPilz : MonoBehaviour
             tmp.a = 0.5f;
             text.color = tmp;
         }
-        if (!audioSource.isPlaying)
+        if (!audioStarted)
         {
             StartCoroutine(playScream());
+            audioStarted = true;
         }
         
         

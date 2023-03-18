@@ -21,6 +21,7 @@ public class TrapTrigger : MonoBehaviour
         up,
         right,
         down,
+        rightdown,
         left,
         clockwise,
         counterclockwise
@@ -40,6 +41,7 @@ public class TrapTrigger : MonoBehaviour
     [SerializeField] bool dontJump = false;
     [SerializeField] bool rotationTrigger = false;
     [SerializeField] Animator animator;
+    [SerializeField] AudioSource audioSource;
     public float killduration;
     public float moveTrapSpeed = 20;
     private Player player;
@@ -54,6 +56,10 @@ public class TrapTrigger : MonoBehaviour
         if (animator != null)
         {
             animator.speed = 0;
+        }
+        if (audioSource == null && trapToTrigger != null)
+        {
+            trapToTrigger.TryGetComponent<AudioSource>(out audioSource);
         }
     }
 
@@ -83,6 +89,10 @@ public class TrapTrigger : MonoBehaviour
             if (animator != null)
             {
                 animator.speed = 1;
+            }
+            if (audioSource != null)
+            {
+                audioSource.enabled = true;
             }
             switch (trapType)
             {
@@ -160,6 +170,10 @@ public class TrapTrigger : MonoBehaviour
                 Debug.Log("flieg nach unten");
                 if (trapToTrigger.transform.position.y > -travelDistance)
                     trapToTrigger.transform.Translate(Vector3.down * moveTrapSpeed * Time.deltaTime);
+                break;
+            case direction.rightdown:
+                if (trapToTrigger.transform.position.y > -travelDistance)
+                    trapToTrigger.transform.Translate(new Vector3(1, -1, 0) * moveTrapSpeed * Time.deltaTime);
                 break;
             case direction.left:
                 Debug.Log("flieg nach links");
