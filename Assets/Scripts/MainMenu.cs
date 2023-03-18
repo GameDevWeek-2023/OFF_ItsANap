@@ -33,8 +33,7 @@ public class MainMenu : MonoBehaviour
     }
     public void CreditsButton()
     {
-        //TODO:
-        //show credits
+        SceneManager.LoadScene("CreditsScene");
     }
     public void StartGameButton()
     {
