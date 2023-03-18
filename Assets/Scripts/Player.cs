@@ -125,8 +125,6 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
-        //player.gameObject.GetComponent<Rigidbody2D>().velocity.y < 0.01f
-        //if (!onGround() || ) return;
         if(onGround() && rb.velocity.y < 0.01f)
         {
             rb.AddRelativeForce(up * jumpForce, ForceMode2D.Impulse);
@@ -140,7 +138,7 @@ public class Player : MonoBehaviour
         RaycastHit2D hit = Physics2D.CapsuleCast(boxCollider.bounds.center, boxCollider.bounds.size, 
                                                 CapsuleDirection2D.Vertical, 0, down, 0.1f, groundLayer);
         //RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider)
-        if (hit.collider != null) Debug.Log("hit " + hit.collider.name);
+        //if (hit.collider != null) Debug.Log("hit " + hit.collider.name);
         
         return hit.collider != null;
     }

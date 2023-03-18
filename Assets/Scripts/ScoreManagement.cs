@@ -31,6 +31,7 @@ public class ScoreManagement : MonoBehaviour
     {
         loseManager = FindObjectOfType<LoseManager>();
         loseManager.loseCounter = PlayerPrefs.GetInt(scoreKey, 0);
+        Debug.Log("Scoremanager " + loseManager.loseCounter);
         loseManager.UpdateCounterText();
         if (GameState.state == stateOfGame.win)
         {

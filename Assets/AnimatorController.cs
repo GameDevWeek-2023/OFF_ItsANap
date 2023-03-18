@@ -26,7 +26,6 @@ public class AnimatorController : MonoBehaviour
             return;
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            Debug.Log("a");
            animator.SetBool("walking", true);
            transform.localScale = new Vector3(-0.25f, transform.localScale.y, transform.localScale.z);
            boxCollider.offset = new Vector2(-0.3f, boxCollider.offset.y);
@@ -37,7 +36,6 @@ public class AnimatorController : MonoBehaviour
             notLeft = true;
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            Debug.Log("d");
             animator.SetBool("walking", true);
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
             boxCollider.offset = new Vector2(-0.1f, boxCollider.offset.y);
