@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyMonster : MonoBehaviour
 {
     [SerializeField] LoseManager loseManager;
+    [SerializeField] AudioSource audioSource;
     private Rigidbody2D player = null;
     private bool playerInRange = false;
-    [SerializeField] private float eps = 0.01f;
+    [SerializeField] private float killRange = 1f;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float timer = 1f;
     private float currentTimer;
@@ -16,6 +17,7 @@ public class EnemyMonster : MonoBehaviour
     void Awake()
     {
         loseManager = FindObjectOfType<LoseManager>();
+        audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class EnemyMonster : MonoBehaviour
                 loseManager.UpdateLose();
                 followPlayer = false;
                 playerInRange = false;
+                audioSource.enabled = false;
             } 
             else 
             {
@@ -79,6 +82,7 @@ public class EnemyMonster : MonoBehaviour
             return;
         }
         playerInRange = true;
+        audioSource.enabled = true;
 
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -97,7 +101,7 @@ public class EnemyMonster : MonoBehaviour
     private bool PlayerCollision()
     {
         if (player == null) return false;
-        if ((player.transform.position - transform.position).magnitude < eps) return true;
+        if ((player.transform.position - transform.position).magnitude < killRange) return true;
         return false;
     }
 }

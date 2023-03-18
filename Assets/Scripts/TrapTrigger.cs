@@ -94,6 +94,11 @@ public class TrapTrigger : MonoBehaviour
             {
                 audioSource.enabled = true;
                 Debug.Log("Play Audio " + audioSource.clip.name);
+                if (trapType != typeOfTrap.Jump)
+                {
+                    
+                }
+                
             }
             switch (trapType)
             {
@@ -128,6 +133,7 @@ public class TrapTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.tag != "Player") return;
+        if (audioSource != null) audioSource.enabled = false;
         player.jump -= DontJump;
     }
     /// <summary>
@@ -233,6 +239,7 @@ public class TrapTrigger : MonoBehaviour
 
     private void DontJump()
     {
+        if (audioSource != null) audioSource.enabled = true;
         dontJump = true;
     }
 

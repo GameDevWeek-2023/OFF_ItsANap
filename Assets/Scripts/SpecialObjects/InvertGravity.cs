@@ -12,6 +12,7 @@ public class InvertGravity : MonoBehaviour
             Debug.LogError("Add Trigger to " + name);
         }
         stairs.SetActive(false);
+        Physics2D.gravity = new Vector2(0, -9.81f);
    }
 
 

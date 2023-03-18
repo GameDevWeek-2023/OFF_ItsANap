@@ -8,10 +8,11 @@ public class ScreamingPilz : MonoBehaviour
     [SerializeField] GameObject eyesClosed;
     [SerializeField] GameObject screaming;
     [SerializeField] Text text;
-    [SerializeField] GameObject flower;
+    [SerializeField] GameObject hotdog;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip screamStart;
     [SerializeField] AudioClip screamLoop;
+    [SerializeField] AudioClip eatHotDog;
     public float speed = 10f;
     private bool happy = false;
     private bool audioStarted = false;
@@ -24,7 +25,7 @@ public class ScreamingPilz : MonoBehaviour
         screaming.SetActive(true);
         text = GetComponentInChildren<Text>();
         text.enabled = false;
-        flower.SetActive(false);
+        hotdog.SetActive(false);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -37,18 +38,22 @@ public class ScreamingPilz : MonoBehaviour
             screaming.SetActive(false);
             eyesClosed.SetActive(true);
 
-            audioSource.enabled = false;
+            //audioSource.enabled = false;
+            audioSource.clip = eatHotDog;
+            audioSource.loop = false;
+            audioSource.Play();
             happy = true;
 
-            flower.SetActive(true);
-            flower.transform.position = player.transform.position;
+            hotdog.SetActive(true);
+            hotdog.transform.position = player.transform.position;
         }
-        if(flower.activeSelf)
+        if(happy)
         {
-            flower.transform.position = Vector3.MoveTowards(flower.transform.position, transform.position, speed * Time.deltaTime);
-            if (flower.transform.position == transform.position)
+            Debug.Log("happy");
+            hotdog.transform.position = Vector3.MoveTowards(hotdog.transform.position, transform.position, speed * Time.deltaTime);
+            if (hotdog.transform.position == transform.position)
             {
-                flower.SetActive(false);
+                hotdog.SetActive(false);
             }
         }
     }

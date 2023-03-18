@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody2D rb;
+    private AudioManager audioManager;
     //[SerializeField] private CapsuleCollider2D capsuleCollider;
     private BoxCollider2D boxCollider;
 
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
     {
         jump += HandleJump;
         boxCollider = GetComponent<BoxCollider2D>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -91,11 +93,11 @@ public class Player : MonoBehaviour
     public void Dead()
     {
         dead = true;
-        //dieSound.Play();
+        dieSound.Play();
         // die animation in Animation Controller
         // stopp movement    
-        //Time.timeScale = 0; 
         StartCoroutine(StopTime());
+
     }
 
     public IEnumerator StopTime()
