@@ -14,9 +14,10 @@ public class ScreamingPilz : MonoBehaviour
     [SerializeField] AudioClip screamLoop;
     [SerializeField] AudioClip eatHotDog;
     public float speed = 10f;
-    private bool happy = false;
+    public bool happy = false;
     private bool audioStarted = false;
     private Player player; 
+    private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class ScreamingPilz : MonoBehaviour
             eyesClosed.SetActive(true);
 
             //audioSource.enabled = false;
+            StopCoroutine(coroutine);
             audioSource.clip = eatHotDog;
             audioSource.loop = false;
             audioSource.Play();
@@ -62,6 +64,7 @@ public class ScreamingPilz : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent<Player>(out player) || happy) return;
+        Debug.Log("OnTrigger");
         text.enabled = true;
         if (player.flowerCollected)
         {
@@ -75,7 +78,8 @@ public class ScreamingPilz : MonoBehaviour
         }
         if (!audioStarted)
         {
-            StartCoroutine(playScream());
+            coroutine = playScream();
+            StartCoroutine(coroutine);
             audioStarted = true;
         }
         
